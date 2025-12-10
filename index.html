@@ -147,26 +147,42 @@
     </section>
     <section>
       <div class="section-content">
-        <h2 class="text-4xl font-semibold mb-4">Methods</h2>
+        <h2 class="text-4xl font-semibold mb-4">Methods</h2>   
         <div>
-          <h3 class="text-2xl mb-4">VLM-SELECT</h3>
+          <h3 class="text-2xl mb-4">DG-SELECT</h3>
+          <img src="/images/3-JustDG.png" class="w-full h-auto my-8"/>
+          <p>
+            An engineered selection method (DG-SELECT) is adapted
+            from previous work, which uses dependency graphs that express 
+            object relationships. In the previous work, these dependencies could be 
+            computed explicitly given ground truth knowledge of the object's
+            models and poses. Here, these dependencies are computed
+            from perceptual information without access to object models.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-2xl mb-4 mt-16">VLM-SELECT</h3>
+          <img src="/images/1-JustVLM-OWG.png" class="w-full h-auto my-8"/>
           <p>
             For the VLM-SELECT selection method, a VLM is
             prompted with a labeled image of the workspace and asked
             to come up with a sequence of actions to retrieve the target
             object, as shown in Fig. 4. The VLM used in this work is
-            Google Deepmind’s Gemini Robotics-ER 1.5 since it is pretrained for robotics tasks and is available
+            Google Deepmind's Gemini Robotics-ER 1.5 since it is pretrained for robotics tasks and is available
             for public use. The result is parsed and the first object in the
             sequence is chosen. VLM-SELECT does not have knowledge
             of which objects have valid grasps. Due to the stochastic output of the VLM, it is called again if it fails to select a graspable
             object.
           </p>
           <pre
-            id="vlm-prompt"
-            class="min-h-128 skeleton"
-            scroll="h-128"
+          id="vlm-prompt"
+          class="min-h-128 skeleton"
+          scroll="h-128"
           ></pre>
+        </div>
+        <div>
           <h3 class="text-2xl mb-4 mt-16">VLM-FIXES-DG</h3>
+          <img src="/images/4-VLM-to-DG.png" class="w-full h-auto my-8"/>
           <p>
             A hybrid approach used both a VLM and dependency planning,
             referred to here as VLM-FIXES-DG. In this approach a VLM is not prompted to
@@ -177,19 +193,22 @@
             and ultimately construct a more accurate dependency graph.
             In this way, it is less dependent on parameter tuning of the
             heuristics described in the previous section for DG-SELECT.
-            Specifically, in the VLM-FIXES-DG approach the identification between ‘below’ and ‘behind’ relationships is performed
+            Specifically, in the VLM-FIXES-DG approach the identification between 'below' and 'behind' relationships is performed
             by prompting the VLM. The general prompt outline is similar
             to that of VLM-SELECT but the output format is now a json
             array of dependencies and the main part of the task prompt
-            is specified as follows with <candidates> being replaced at
-            runtime with a json array of ‘behind’ dependencies:
+            is specified as follows with &lt;candidates&gt; being replaced at
+            runtime with a json array of 'behind' dependencies:
           </p>
           <pre
             id="vlm-dg-prompt"
             class="min-h-128 skeleton"
             scroll="h-128"
           ></pre>
+        </div>
+        <div>
           <h3 class="text-2xl mb-4 mt-16">VLM-GRASPS</h3>
+          <img src="/images/2-DG-to-VLM.png" class="w-full h-auto my-8"/>
           <p>
             The VLM+GRASPS selection method
             allows a VLM to make the ultimate choice of which object to
