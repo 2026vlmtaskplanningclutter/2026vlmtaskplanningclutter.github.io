@@ -1,284 +1,200 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="description"
-        content="VLM Task Planning in Clutter">
-  <meta name="keywords" content="VLM Task Planning in Clutter">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VLM Task Planning in Clutter</title>
+<html lang="en" data-theme="research-light">
+  <head>
+    <!-- Meta -->
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VLM Task Planning in Clutter</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.ico">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-</head>
-<body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-</nav>
-
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              Anonymous</span>
-            <!-- <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span> -->
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <!-- <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google </span> -->
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="./static/paper.pdf"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!-- <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span> -->
-              <!-- Video Link. -->
-              <!-- <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span> -->
-              <!-- Code Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/google/nerfies"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span> -->
-              <!-- Dataset Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-              </span> -->
-            </div>
-
-          </div>
+    <!-- Style -->
+    <link href="/src/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="bg-base-200 min-h-[50vh] flex">
+      <div class="section-content max-w-2xl min-h-full">
+        <!-- Title -->
+        <h1 class="text-5xl font-semibold">
+          Are VLMs Effective Task Planners for Robotic Object Retrieval in
+          Clutter?
+        </h1>
+        <!-- Authors -->
+        <div class="flex flex-row mt-8 gap-2">
+          <!-- <a>Anonymous<sup>1</sup>,</a>
+          <a>Anonymous<sup>1</sup>,</a> -->
+          <a>Anonymous<sup>1</sup></a>
+        </div>
+        <!-- Organizations -->
+        <div class="flex flex-row">
+          <a><sup>1</sup>Organization</a>
+        </div>
+        <!-- Buttons -->
+        <div class="flex flex-row mt-4">
+          <a class="btn btn-primary" href="/public/paper.pdf">
+            <i class="fa-solid fa-file-pdf"></i>
+            Paper
+          </a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- <section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Robots should effectively retrieve novel objects in clutter,
-            where a target may not be directly visible or accessible. Such
-            problems involve reasoning about the order of blocking objects
-            to be removed before the target is picked. Engineered solutions
-            in this space focus on identifying object relationships from
-            depth to inform the retraction sequence. Vision-Language-
-            Models (VLMs) have been argued as pretrained solutions that
-            effectively reason about such spatial relationships in images.
-            This paper first aims to evaluate VLMs against engineered
-            solutions for selecting which object to retrieve next. For this
-            purpose, a modular software infrastructure is developed en-
-            abling evaluation of alternatives for object selection. Simu-
-            lated scenes with significant occlusions and clutter are defined
+    </section>
+    <section>
+      <div class="section-content flex flex-col">
+        <h2 class="text-4xl font-semibold mb-4">Abstract</h2>
+        <div class="flex flex-row flex-wrap md:flex-nowrap gap-8">
+          <p class="max-w-full md:max-w-md lg:max-w-xl text-justify">
+            Robots must effectively retrieve novel objects in clutter, where a
+            target may not be directly visible or accessible. Such problems
+            involve reasoning about the order of blocking objects to be removed
+            before the target is picked. Engineered solutions in this space
+            focus on identifying object relationships from depth to inform the
+            retraction sequence. Vision-Language-Models (VLMs) have been argued
+            as pretrained solutions that effectively reason about such spatial
+            relationships in images. This paper first aims to evaluate VLMs
+            against engineered solutions for selecting which object to retrieve
+            next. For this purpose, a modular software infrastructure is
+            developed enabling evaluation of alternatives for object selection.
+            Simulated scenes with significant occlusions and clutter are defined
             as a dataset for sequential object retrieval. These scenes are
-            solvable by the modular software given human-in-the-loop
-            object selection, which also serves as an expert comparison
-            point. The evaluation indicates that both VLMs and engineered
-            solutions do not perform significantly better than random ob-
-            ject selection. Yet, they have complementary properties. This
-            motivates hybrid strategies for targeted object retrieval that
-            combine the visual reasoning of VLMs with engineered de-
-            pendencies via 3D reasoning. The hybrid approaches achieve
-            improved performance. These observations are also confirmed
+            solvable by the modular software given human-in-the-loop object
+            selection, which also serves as an expert comparison point. The
+            evaluation indicates that both VLMs and engineered solutions do not
+            perform significantly better than random object selection. Yet, they
+            have complementary properties. This motivates hybrid strategies for
+            targeted object retrieval that combine the visual reasoning of VLMs
+            with engineered dependencies via 3D reasoning. The hybrid approaches
+            achieve improved performance. These observations are also confirmed
             by real world experiments using a robotic arm with a parallel
             gripper, a stereo camera, and the same software infrastructure.
           </p>
+          <img
+            src="/images/robot.png"
+            class="h-80 md:h-auto grow min-w-0 object-cover object-center"
+          />
         </div>
       </div>
-    </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <!-- <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{anonymous2026vlmclutter,
-  author    = {Anonymous},
-  title     = {Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?},
-  journal   = {},
-  year      = {2026},
-}</code></pre>
-  </div>
-</section>
-
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
+    </section>
+    <section>
+      <div class="section-content">
+        <h2 class="text-4xl font-semibold mb-4">Dataset</h2>
+        <div class="mb-8">
+          <h3 class="text-2xl font-semibold mb-4">Unstructured</h3>
           <p>
-            This website is based on <a href="https://github.com/nerfies/nerfies.github.io">Nerfies Website</a>.
+            Out of our simulated scenes, we made "unstructured" scenes which have chaotic placement. The target
+            object is marked by the "0" segmentation in red. You can use the slider below to scrub through all of our unstructured scenes.
           </p>
+          <div class="flex flex-row flex-wrap gap-4 h-fit">
+            <div class="block min-w-80 w-80 grow">
+              <h3 class="text-2xl mb-4">Front</h3>
+              <img id="unstructured_front_img" class="skeleton w-full h-100 object-cover"></img>
+            </div>
+            <div class="block min-w-80 w-80 grow">
+              <h3 class="text-2xl mb-4">Back</h3>
+              <img id="unstructured_back_img" class="skeleton w-full h-100 object-cover"></img>
+            </div>
+          </div>
+          <div class="w-full mt-4 block">
+            <h3 id="unstructured_img_name" class="mb-8 text-center h-1"></h3>
+            <input id="unstructured_img_slider" type="range" min="0" max="10" value="5" class="range range-md w-full" step="1" />
+          </div>
+        </div>
+        <div class="mb-8">
+          <h3 class="text-2xl font-semibold mb-4">Structured</h3>
+          <p>
+            Out of our simulated scenes, structured scenes had more organized object placement with clear stacking relationships.
+            object is marked by the "0" segmentation in red. You can use the slider below to scrub through all of our structured scenes.
+          </p>
+          <div class="flex flex-row flex-wrap gap-4 h-fit">
+            <div class="block min-w-80 w-80 grow">
+              <h3 class="text-2xl mb-4">Front</h3>
+              <img id="structured_front_img" class="skeleton w-full h-100 object-cover"></img>
+            </div>
+            <div class="block min-w-80 w-80 grow">
+              <h3 class="text-2xl mb-4">Back</h3>
+              <img id="structured_back_img" class="skeleton w-full h-100 object-cover"></img>
+            </div>
+          </div>
+          <div class="w-full mt-4 block">
+            <h3 id="structured_img_name" class="mb-8 text-center h-1"></h3>
+            <input id="structured_img_slider" type="range" min="0" max="10" value="5" class="range range-md w-full" step="1" />
+          </div>
+        </div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-4">Real</h3>
+          <p>Each method was tested on three real scenes three times.</p>
+          <div
+            class="ex-carousel w-full h-128 mb-4 skeleton visible-items-1"
+            img-class="object-cover p-1 rounded-2xl"
+            dataset="real"
+            advance="3"
+            dots
+            buttons
+          ></div>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
-
-</body>
+      </div>
+    </section>
+    <section>
+      <div class="section-content">
+        <h2 class="text-4xl font-semibold mb-4">Methods</h2>
+        <div>
+          <h3 class="text-2xl mb-4">VLM+PROMPT</h3>
+          <p>
+            For the VLM+PROMPT approach, we inputted the following prompt into
+            the VLM:
+          </p>
+          <pre
+            id="vlm-prompt"
+            class="min-h-128 skeleton"
+            scroll="h-128 mb-16"
+          ></pre>
+          <h3 class="text-2xl mb-4">VLM-INTO-DG</h3>
+          <p>
+            For the VLM-INTO-DG approach, we inputted the following prompt into
+            the VLM:
+          </p>
+          <pre
+            id="vlm-dg-prompt"
+            class="min-h-128 skeleton"
+            scroll="h-128 mb-16"
+          ></pre>
+          <h3 class="text-2xl mb-4">DG-VLM</h3>
+          <p>
+            For the DG-VLM approach, we inputted the following prompt into the
+            VLM:
+          </p>
+          <pre
+            id="dg-vlm-prompt"
+            class="min-h-128 skeleton"
+            scroll="h-128"
+          ></pre>
+        </div>
+      </div>
+    </section>
+    <section id="BibTeX">
+      <div class="section-content">
+        <h2 class="text-2xl font-semibold mb-4">BibTeX</h2>
+        <pre>
+  @article{anonymous2026vlmclutter,
+      author    = {Anonymous},
+      title     = {Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?},
+      journal   = {},
+      year      = {2026},
+    }</pre
+        >
+      </div>
+    </section>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

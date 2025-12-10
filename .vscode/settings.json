@@ -8,5 +8,9 @@
   "tailwindCSS.classAttributes": ["class", "ui"],
   "tailwindCSS.experimental.classRegex": [
     ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ]
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.useTabStops": false,
+  "editor.tabSize": 2
 }

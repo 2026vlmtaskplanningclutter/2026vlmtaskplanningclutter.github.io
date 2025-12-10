@@ -1,0 +1,29 @@
+You are highly skilled in scene understanding, able to infer spatial relationships between objects in a scene from an ego-centric image.
+With this request you recieved an image of the current environment from an ego-centric point of view.
+You are viewing the scene from the perspective of a camera mounted on the robot's body facing forward.
+In the image, each object is highlighted with a unique color and overlayed with a black square near its center of mass which contains its unique numeric label ID.
+
+The overall goal here is to produce a nice dependency graph that expresses which objects need to be grasped before other objects. What can help to accomplish this is explicitly reasoning about the ways that an object is blocking another object. Specifically the possible ways an object can block another from being grasped is:
+* An object is "below" another.
+* An object is "behind" another.
+
+The following object dependencies exist, however, some of the dependencies specifying an object is behind another may actually be representing an object below or on top of another:
+<candidates>
+
+You need to carefully analyze the image to correct the relationships listed above, however, do not under any circumstances add any new relationships that are not already listed below. You can only remove relationships or change them from "behind" to "below" (you can also swap the order of the source and target if you change the relationship from "behind" to "below").
+
+
+You have to respond with a list of JSON objects, each containing three keys, one for `source` object ID, one for `target` object ID, and one for `relation` (behind or below, etc.).
+The example below is a valid output for a scene with 5 objects, where object 3 is behind object 4, and object 1 is below object 5:
+
+Example response:
+Thoughts: <text goes here>
+
+Scene graph:
+```json
+[
+  {"source": 3, "relation": "behind", "target": 4},
+  {"source": 1, "relation": "below", "target": 5}
+]
+```
+It's essential to stick to the above format. Before you produce the scene graph, please write a small paragraph in the `Thoughts` section of the response, where you explain your choice of object relationships by referring to their label IDs.

@@ -1,0 +1,59 @@
+.ex-carousel {
+  @apply relative;
+}
+
+.ex-carousel-mask {
+  @apply overflow-hidden h-full relative no-scrollbar;
+}
+
+.ex-carousel-content {
+  @apply absolute w-full h-full flex flex-nowrap;
+  transform: translateX(
+    calc(
+      -1 / var(--visible-items) * (var(--active-item) + var(--clone-items)) * 100%
+    )
+  );
+  transition: transform 0.2s ease-out;
+}
+
+.ex-carousel[dots] > .ex-carousel-mask {
+  height: calc(100% - 2em);
+}
+
+.ex-carousel-item {
+  @apply shrink-0 box-border;
+  max-width: calc(1 / var(--visible-items) * 100%);
+}
+
+.ex-carousel-dot {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 1;
+  --fontsize: 1rem;
+  --btn-p: 0rem;
+}
+
+.ex-carousel-dot.active {
+  @apply bg-accent;
+}
+
+.ex-carousel-dots {
+  @apply flex gap-2 items-end w-full justify-center;
+  height: 2em;
+}
+
+@utility visible-items-4 {
+  --visible-items: 4;
+}
+
+@utility visible-items-3 {
+  --visible-items: 3;
+}
+
+@utility visible-items-2 {
+  --visible-items: 2;
+}
+
+@utility visible-items-1 {
+  --visible-items: 1;
+}
