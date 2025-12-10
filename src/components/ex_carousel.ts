@@ -27,13 +27,13 @@ import {
 } from "../utils";
 
 export function initRealDatasetExCarousel(el: HTMLElement, itemClass: string) {
-  for (const image in realImages) {
-    const url = realImages[image].default;
-    const baseName = getBaseNameFromPath(url);
+  for (const imageUrl in realImages) {
+    const realUrl = realImages[imageUrl].default;
+    const baseName = getBaseNameFromPath(imageUrl);
     const [fileName, _] = splitExt(baseName);
     const child = toHTML(`
       <div class="ex-carousel-item relative">
-        <img src="${url}" class="h-full w-full ${itemClass}"/>
+        <img src="${realUrl}" class="h-full w-full ${itemClass}"/>
         <h3 class="absolute top-8 left-8 text-white text-2xl font-semibold">${toCapitalCase(
           fileName
         )}</h3>
