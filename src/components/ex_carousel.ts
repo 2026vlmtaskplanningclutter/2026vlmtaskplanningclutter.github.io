@@ -18,12 +18,34 @@ import {
   structuredImages,
   unstructuredImages,
 } from "../images";
-import { posMod, toHTML } from "../utils";
+import {
+  getBaseNameFromPath,
+  posMod,
+  splitExt,
+  toCapitalCase,
+  toHTML,
+} from "../utils";
+
+export function initRealDatasetExCarousel(el: HTMLElement, itemClass: string) {
+  for (const image in realImages) {
+    const url = realImages[image].default;
+    const baseName = getBaseNameFromPath(url);
+    const [fileName, _] = splitExt(baseName);
+    const child = toHTML(`
+      <div class="ex-carousel-item relative">
+        <img src="${url}" class="h-full w-full ${itemClass}"/>
+        <h3 class="absolute top-8 left-8 text-white text-2xl font-semibold">${toCapitalCase(
+          fileName
+        )}</h3>
+      </div>
+      `);
+    el.appendChild(child);
+  }
+}
 
 export function initDatasetExCarousels(query: string) {
   const els = document.querySelectorAll(query);
   for (const el of els) {
-    let i = 0;
     const dataset = el.getAttribute("dataset");
     const itemClass = el.getAttribute("item-class") ?? "object-cover";
     let imageModules;
@@ -38,8 +60,8 @@ export function initDatasetExCarousels(query: string) {
         imageModules = unstructuredImages;
         break;
       case "real":
-        imageModules = realImages;
-        break;
+        initRealDatasetExCarousel(el as HTMLElement, itemClass);
+        return;
     }
     for (const image in imageModules) {
       const url = imageModules[image].default;
@@ -47,7 +69,6 @@ export function initDatasetExCarousels(query: string) {
         <img src="${url}" class="ex-carousel-item h-full w-full ${itemClass}"/>
         `);
       el.appendChild(child);
-      i += 1;
     }
   }
 }
@@ -174,15 +195,16 @@ export function initExCarousels(query: string) {
     }
 
     if (el.hasAttribute("buttons")) {
+      el.classList.add("px-8");
       const leftBtn = toHTML<HTMLButtonElement>(`
         <button
-          class="btn absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          class="btn absolute left-6 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
         >
           <i class="fa-solid fa-chevron-left"></i>
         </button>`);
       const rightBtn = toHTML<HTMLButtonElement>(`
         <button
-          class="btn absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2"
+          class="btn absolute right-6 top-1/2 transform translate-x-1/2 -translate-y-1/2"
         >
           <i class="fa-solid fa-chevron-right"></i>
         </button>`) as HTMLButtonElement;
