@@ -11,21 +11,26 @@ document.getElementById("vlm-prompt")!.innerText = promptPickObject;
 document.getElementById("vlm-dg-prompt")!.innerText = promptMakeDg;
 document.getElementById("dg-vlm-prompt")!.innerText = promptPickObjectDgDesc;
 
-switch (window.location.pathname) {
-  case "/scenes":
-    document.getElementById("scenes")?.scrollIntoView({
-      behavior: "smooth",
-    });
-    break;
-  case "/methods":
-  case "/prompts":
-    document.getElementById("methods")?.scrollIntoView({
-      behavior: "smooth",
-    });
-    break;
-  case "/bibtex":
-    document.getElementById("bibtex")?.scrollIntoView({
-      behavior: "smooth",
-    });
-    break;
+function parsePath() {
+  const pathArray = window.location.pathname.split("/");
+  const path = pathArray[pathArray.length - 1];
+  switch (path) {
+    case "scenes":
+      document.getElementById("scenes")?.scrollIntoView({
+        behavior: "smooth",
+      });
+      break;
+    case "methods":
+    case "prompts":
+      document.getElementById("methods")?.scrollIntoView({
+        behavior: "smooth",
+      });
+      break;
+    case "bibtex":
+      document.getElementById("bibtex")?.scrollIntoView({
+        behavior: "smooth",
+      });
+      break;
+  }
 }
+parsePath();
