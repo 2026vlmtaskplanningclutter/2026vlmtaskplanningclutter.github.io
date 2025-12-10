@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && shx cp dist/index.html dist/404.html",
+    "build_local": "tsc && vite build --base=/dist && shx cp dist/index.html dist/404.html",
     "preview": "vite preview"
   },
   "devDependencies": {
