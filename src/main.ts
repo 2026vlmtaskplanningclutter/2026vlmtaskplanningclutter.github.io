@@ -8,5 +8,5 @@ import {
 initComponents();
 
 document.getElementById("vlm-prompt")!.innerText = promptPickObject;
-document.getElementById("dg-vlm-prompt")!.innerText = promptPickObjectDgDesc;
 document.getElementById("vlm-dg-prompt")!.innerText = promptMakeDg;
+document.getElementById("dg-vlm-prompt")!.innerText = promptPickObjectDgDesc;
