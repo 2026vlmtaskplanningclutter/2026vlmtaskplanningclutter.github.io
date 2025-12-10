@@ -98,7 +98,7 @@ pre {
 }
 
 .section-content {
-  @apply m-auto px-4 py-8 md:p-8 max-w-5xl;
+  @apply m-auto px-4 py-8 md:px-8 md:py-16 max-w-5xl;
 }
 
 .header-2 {

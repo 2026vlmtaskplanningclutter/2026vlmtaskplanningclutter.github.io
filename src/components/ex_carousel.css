@@ -13,11 +13,11 @@
       -1 / var(--visible-items) * (var(--active-item) + var(--clone-items)) * 100%
     )
   );
-  transition: transform 0.2s ease-out;
+  transition: transform 0.25s ease-out;
 }
 
 .ex-carousel[dots] > .ex-carousel-mask {
-  height: calc(100% - 2em);
+  height: calc(100% - 1.5em);
 }
 
 .ex-carousel-item {
@@ -34,8 +34,8 @@
 }
 
 .ex-carousel-dot {
-  width: 1em;
-  height: 1em;
+  width: 2em;
+  height: 0.5em;
   flex-shrink: 1;
   --fontsize: 1rem;
   --btn-p: 0rem;
@@ -47,7 +47,7 @@
 
 .ex-carousel-dots {
   @apply flex gap-2 items-end w-full justify-center;
-  height: 2em;
+  height: 1.5em;
 }
 
 @utility visible-items-4 {
