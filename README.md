@@ -8,7 +8,7 @@ This is the repository for the website of the `Are VLMs Effective Task Planners 
 @article{anonymous2026vlmclutter,
   author    = {Anonymous},
   title     = {Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?},
-  journal   = {},
+  journal   = {In Submission},
   year      = {2026},
 }
 ```

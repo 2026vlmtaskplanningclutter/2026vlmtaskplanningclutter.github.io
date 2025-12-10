@@ -1,256 +1,220 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="research-light">
-  <head>
-    <!-- Meta -->
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VLM Task Planning in Clutter</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <!-- Meta -->
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VLM Task Planning in Clutter</title>
 
-    <!-- Style -->
-    <link href="/src/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <section class="bg-base-200 min-h-[50vh] flex">
-      <div class="section-content max-w-2xl min-h-full">
-        <!-- Title -->
-        <h1 class="text-5xl font-semibold">
-          Are VLMs Effective Task Planners for Robotic Object Retrieval in
-          Clutter?
-        </h1>
-        <!-- Authors -->
-        <div class="flex flex-row mt-8 gap-2">
-          <!-- <a>Anonymous<sup>1</sup>,</a>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+    rel="stylesheet" />
+
+  <!-- Style -->
+  <link href="/src/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  </div>
+  <section class="bg-base-200 min-h-[50vh] flex">
+    <div class="section-content max-w-2xl min-h-full">
+      <!-- Title -->
+      <h1 class="text-5xl font-semibold">
+        Are VLMs Effective Task Planners for Robotic Object Retrieval in
+        Clutter?
+      </h1>
+      <!-- Authors -->
+      <div class="flex flex-row mt-8 gap-2">
+        <!-- <a>Anonymous<sup>1</sup>,</a>
           <a>Anonymous<sup>1</sup>,</a> -->
-          <a>Anonymous<sup>1</sup></a>
-        </div>
-        <!-- Organizations -->
-        <div class="flex flex-row">
-          <a><sup>1</sup>Organization</a>
-        </div>
-        <!-- Buttons -->
-        <div class="flex flex-row mt-4">
-          <a class="btn btn-primary" href="/paper.pdf">
-            <i class="fa-solid fa-file-pdf"></i>
-            Paper
-          </a>
-        </div>
+        <a>Anonymous<sup>1</sup></a>
       </div>
-    </section>
-    <section>
-      <div class="section-content flex flex-col">
-        <h2 class="header-2">Abstract</h2>
-        <div class="flex flex-row flex-wrap md:flex-nowrap gap-8">
-          <p class="max-w-full md:max-w-md lg:max-w-xl text-justify">
-            Robots must effectively retrieve novel objects in clutter, where a
-            target may not be directly visible or accessible. Such problems
-            involve reasoning about the order of blocking objects to be removed
-            before the target is picked. Engineered solutions in this space
-            focus on identifying object relationships from depth to inform the
-            retraction sequence. Vision-Language-Models (VLMs) have been argued
-            as pretrained solutions that effectively reason about such spatial
-            relationships in images. This paper first aims to evaluate VLMs
-            against engineered solutions for selecting which object to retrieve
-            next. For this purpose, a modular software infrastructure is
-            developed enabling evaluation of alternatives for object selection.
-            Simulated scenes with significant occlusions and clutter are defined
-            as a dataset for sequential object retrieval. These scenes are
-            solvable by the modular software given human-in-the-loop object
-            selection, which also serves as an expert comparison point. The
-            evaluation indicates that both VLMs and engineered solutions do not
-            perform significantly better than random object selection. Yet, they
-            have complementary properties. This motivates hybrid strategies for
-            targeted object retrieval that combine the visual reasoning of VLMs
-            with engineered dependencies via 3D reasoning. The hybrid approaches
-            achieve improved performance. These observations are also confirmed
-            by real world experiments using a robotic arm with a parallel
-            gripper, a stereo camera, and the same software infrastructure.
-          </p>
-          <img
-            src="/images/robot.png"
-            class="h-80 md:h-auto grow min-w-0 object-cover object-center"
-          />
-        </div>
+      <!-- Organizations -->
+      <div class="flex flex-row">
+        <a><sup>1</sup>Organization</a>
       </div>
-    </section>
-    <section>
-      <div class="section-content">
-        <h2 id="scenes" class="header-2">Scenes</h2>
-        <div class="mb-16">
-          <h3 class="header-3">Unstructured</h3>
-          <p>
-            Out of our simulated scenes, we made "unstructured" scenes which have chaotic placement. 
-            The target object is marked by the "0" segmentation in red. You can use the slider below to scrub through all of our unstructured scenes.
-          </p>
-          <div class="flex flex-row flex-wrap gap-4 h-fit">
-            <div class="block w-80 grow">
-              <h3 class="sim-img-label">Front View (Camera)</h3>
-              <img id="unstructured_front_img" class="sim-img"></img>
-            </div>
-            <div class="block w-80 grow">
-              <h3 class="sim-img-label">Back View</h3>
-              <img id="unstructured_back_img" class="sim-img"></img>
-            </div>
+      <!-- Buttons -->
+      <div class="flex flex-row mt-4">
+        <a class="btn btn-primary" href="/paper.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i>
+          Paper
+        </a>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="section-content flex flex-col">
+      <h2 class="header-2">Abstract</h2>
+      <div class="flex flex-row flex-wrap md:flex-nowrap gap-8">
+        <p class="max-w-full md:max-w-md lg:max-w-xl text-justify">
+          Robots must effectively retrieve novel objects in clutter, where a
+          target may not be directly visible or accessible. Such problems
+          involve reasoning about the order of blocking objects to be removed
+          before the target is picked. Engineered solutions in this space
+          focus on identifying object relationships from depth to inform the
+          retraction sequence. Vision-Language-Models (VLMs) have been argued
+          as pretrained solutions that effectively reason about such spatial
+          relationships in images. This paper first aims to evaluate VLMs
+          against engineered solutions for selecting which object to retrieve
+          next. For this purpose, a modular software infrastructure is
+          developed enabling evaluation of alternatives for object selection.
+          Simulated scenes with significant occlusions and clutter are defined
+          as a dataset for sequential object retrieval. These scenes are
+          solvable by the modular software given human-in-the-loop object
+          selection, which also serves as an expert comparison point. The
+          evaluation indicates that both VLMs and engineered solutions do not
+          perform significantly better than random object selection. Yet, they
+          have complementary properties. This motivates hybrid strategies for
+          targeted object retrieval that combine the visual reasoning of VLMs
+          with engineered dependencies via 3D reasoning. The hybrid approaches
+          achieve improved performance. These observations are also confirmed
+          by real world experiments using a robotic arm with a parallel
+          gripper, a stereo camera, and the same software infrastructure.
+        </p>
+        <img src="/images/robot.png" class="h-80 md:h-auto grow min-w-0 object-cover object-center" />
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="section-content">
+      <h2 id="scenes" class="header-2">Scenes</h2>
+      <div class="mb-16">
+        <h3 class="header-3">Simulated</h3>
+        <p>
+          For experiments in simulation, we used MuJoCo for physics simulation and perception. The following is a
+          collection of the simulated scenes used in our experiements. The target object is
+          marked by the "0" segmentation in red. You can use the slider below to scrub through the scenes.
+        </p>
+        <div class="flex flex-row flex-wrap gap-4 h-fit">
+          <div class="block w-80 grow">
+            <h3 class="sim-img-label">Front View (Camera)</h3>
+            <img id="sim_front_img" class="sim-img"></img>
           </div>
-          <div class="w-full mt-4 block">
-            <h3 id="unstructured_img_name" class="sim-img-name"></h3>
-            <input id="unstructured_img_slider" type="range" min="0" max="10" value="5" class="range range-sm w-full" step="1" />
+          <div class="block w-80 grow">
+            <h3 class="sim-img-label">Back View</h3>
+            <img id="sim_back_img" class="sim-img"></img>
           </div>
         </div>
-        <div class="mb-16">
-          <h3 class="header-3">Structured</h3>
-          <p>
-            Out of our simulated scenes, structured scenes had more organized object placement with clear stacking relationships.
-            The target object is marked by the "0" segmentation in red. You can use the slider below to scrub through all of our structured scenes.
-          </p>
-          <div class="flex flex-row flex-wrap gap-4 h-fit">
-            <div class="block w-80 grow">
-              <h3 class="sim-img-label">Front View (Camera)</h3>
-              <img id="structured_front_img" class="sim-img"></img>
-            </div>
-            <div class="block w-80 grow">
-              <h3 class="sim-img-label">Back View</h3>
-              <img id="structured_back_img" class="sim-img"></img>
-            </div>
-          </div>
-          <div class="w-full mt-4 block">
-            <h3 id="structured_img_name" class="sim-img-name"></h3>
-            <input id="structured_img_slider" type="range" min="0" max="10" value="5" class="range range-sm w-full" step="1" />
-          </div>
-        </div>
-        <div>
-          <h3 class="header-3">Real</h3>
-          <p>Three real scenes were used to test the our methods in the real world.</p>
-          <div
-            class="ex-carousel w-full h-128 mb-4 skeleton visible-items-1"
-            img-class="object-cover p-1 rounded-2xl"
-            dataset="real"
-            advance="3"
-            dots
-            buttons
-          ></div>
+        <div class="w-full mt-4 block">
+          <h3 id="sim_img_name" class="sim-img-name"></h3>
+          <input id="sim_img_slider" type="range" min="0" max="10" value="5" class="range range-sm w-full" step="1" />
         </div>
       </div>
+      <div>
+        <h3 class="header-3">Real</h3>
+        <p>Three real scenes were used to test the our methods in the real world.</p>
+        <div class="ex-carousel w-full h-128 mb-4 skeleton visible-items-1" img-class="object-cover p-1 rounded-2xl"
+          dataset="real" advance="3" dots buttons></div>
       </div>
-    </section>
-    <section>
-      <div class="section-content">
-        <h2 id="methods" class="header-2">Methods</h2>   
-        <div class="mb-16">
-          <h3 class="header-3">DG-SELECT</h3>
-          <img src="/images/3-JustDG.png" class="w-full h-auto my-8"/>
-          <p>
-            An engineered selection method (DG-SELECT) is adapted
-            from previous work, which uses dependency graphs that express 
-            object relationships. In the previous work, these dependencies could be 
-            computed explicitly given ground truth knowledge of the object's
-            models and poses. Here, these dependencies are computed
-            from perceptual information without access to object models.
-          </p>
-        </div>
-        <div class="mb-16">
-          <h3 class="header-3">VLM-SELECT</h3>
-          <img src="/images/1-JustVLM-OWG.png" class="w-full h-auto my-8"/>
-          <p>
-            For the VLM-SELECT selection method, a VLM is
-            prompted with a labeled image of the workspace and asked
-            to come up with a sequence of actions to retrieve the target
-            object, as shown in Fig. 4. The VLM used in this work is
-            Google Deepmind's Gemini Robotics-ER 1.5 since it is pretrained for robotics tasks and is available
-            for public use. The result is parsed and the first object in the
-            sequence is chosen. VLM-SELECT does not have knowledge
-            of which objects have valid grasps. Due to the stochastic output of the VLM, it is called again if it fails to select a graspable
-            object.
-          </p>
-          <p>The VLM prompt for this method is shown below:</p>
-          <pre
-          id="vlm-prompt"
-          class="min-h-128 skeleton"
-          scroll="h-128"
-          ></pre>
-        </div>
-        <div class="mb-16">
-          <h3 class="header-3">VLM-FIXES-DG</h3>
-          <img src="/images/4-VLM-to-DG.png" class="w-full h-auto my-8"/>
-          <p>
-            A hybrid approach used both a VLM and dependency planning,
-            referred to here as VLM-FIXES-DG. In this approach a VLM is not prompted to
-            directly return the object to be picked. Instead, it is prompted
-            with candidate dependency relations between pairs of objects generated by the same reasoning employed by the
-            DG-SELECT approach. The approach relies on the 'visual
-            understanding' of the VLM to fix up incorrect dependencies
-            and ultimately construct a more accurate dependency graph.
-            In this way, it is less dependent on parameter tuning of the
-            heuristics described in the previous section for DG-SELECT.
-            Specifically, in the VLM-FIXES-DG approach the identification between 'below' and 'behind' relationships is performed
-            by prompting the VLM. The general prompt outline is similar
-            to that of VLM-SELECT but the output format is now a json
-            array of dependencies and the main part of the task prompt
-            is specified as follows with &lt;candidates&gt; being replaced at
-            runtime with a json array of 'behind' dependencies.
-          </p>
-          <p>The VLM prompt for this method is shown below:</p>
-          <pre
-            id="vlm-dg-prompt"
-            class="min-h-128 skeleton"
-            scroll="h-128"
-          ></pre>
-        </div>
-        <div>
-          <h3 class="header-3">VLM-GRASPS</h3>
-          <img src="/images/2-DG-to-VLM.png" class="w-full h-auto my-8"/>
-          <p>
-            The VLM+GRASPS selection method
-            allows a VLM to make the ultimate choice of which object to
-            be picked next but prompts the VLM with grasp dependency
-            information. If the VLM selects an object that is not directly
-            pickable, then the approach is attempted again.
-          </p>
-          <p>
-            The overall prompt outline is nearly identical to
-            VLM-SELECT but it is given a scene description before the
-            task is specified. The scene is described as a list of grasp dependencies written in natural language sentences of the form
-            “Object A is blocked by object B” or of the form “Object C
-            is graspable” if object C has valid grasps available. As explained in the subsection on grasping above, valid grasps are
-            those whose IK solutions were found not to be in collision
-            with other objects or the static environment, in which the
-            gripper was found to not be in collision with the object to
-            be grasped, and in which the object to be grasped is the only
-            one between the gripper fingers at the grasp pose.
-          </p>
-          <p>The VLM prompt for this method is shown below:</p>
-          <pre
-            id="dg-vlm-prompt"
-            class="min-h-128 skeleton"
-            scroll="h-128"
-          ></pre>
-        </div>
+    </div>
+    </div>
+  </section>
+  <section>
+    <div class="section-content">
+      <h2 id="methods" class="header-2">Methods</h2>
+      <div class="mb-16">
+        <h3 class="header-3">DG-SELECT</h3>
+        <img src="/images/3-JustDG.png" class="w-full h-auto my-8 bg-white p-4" />
+        <p>
+          An engineered selection method (DG-SELECT) is adapted
+          from previous work, which uses dependency graphs that express
+          object relationships. In the previous work, these dependencies could be
+          computed explicitly given ground truth knowledge of the object's
+          models and poses. Here, these dependencies are computed
+          from perceptual information without access to object models.
+        </p>
       </div>
-    </section>
-    <section id="bibtex">
-      <div class="section-content">
-        <h2 class="header-3">BibTeX</h2>
-        <pre>
+      <div class="mb-16">
+        <h3 class="header-3">VLM-SELECT</h3>
+        <img src="/images/1-JustVLM-OWG.png" class="w-full h-auto my-8 bg-white p-4" />
+        <p>
+          For the VLM-SELECT selection method, a VLM is
+          prompted with a labeled image of the workspace and asked
+          to come up with a sequence of actions to retrieve the target
+          object, as shown in Fig. 4. The VLM used in this work is
+          Google Deepmind's Gemini Robotics-ER 1.5 since it is pretrained for robotics tasks and is available
+          for public use. The result is parsed and the first object in the
+          sequence is chosen. VLM-SELECT does not have knowledge
+          of which objects have valid grasps. Due to the stochastic output of the VLM, it is called again if it fails to
+          select a graspable
+          object.
+        </p>
+        <p>The VLM prompt for this method is shown below:</p>
+        <pre id="vlm-prompt" class="min-h-128 skeleton" scroll="h-128"></pre>
+      </div>
+      <div class="mb-16">
+        <h3 class="header-3">VLM-FIXES-DG</h3>
+        <img src="/images/4-VLM-to-DG.png" class="w-full h-auto my-8 bg-white p-4" />
+        <p>
+          A hybrid approach used both a VLM and dependency planning,
+          referred to here as VLM-FIXES-DG. In this approach a VLM is not prompted to
+          directly return the object to be picked. Instead, it is prompted
+          with candidate dependency relations between pairs of objects generated by the same reasoning employed by the
+          DG-SELECT approach. The approach relies on the 'visual
+          understanding' of the VLM to fix up incorrect dependencies
+          and ultimately construct a more accurate dependency graph.
+          In this way, it is less dependent on parameter tuning of the
+          heuristics described in the previous section for DG-SELECT.
+          Specifically, in the VLM-FIXES-DG approach the identification between 'below' and 'behind' relationships is
+          performed
+          by prompting the VLM. The general prompt outline is similar
+          to that of VLM-SELECT but the output format is now a json
+          array of dependencies and the main part of the task prompt
+          is specified as follows with &lt;candidates&gt; being replaced at
+          runtime with a json array of 'behind' dependencies.
+        </p>
+        <p>The VLM prompt for this method is shown below:</p>
+        <pre id="vlm-dg-prompt" class="min-h-128 skeleton" scroll="h-128"></pre>
+      </div>
+      <div>
+        <h3 class="header-3">VLM-GRASPS</h3>
+        <img src="/images/2-DG-to-VLM.png" class="w-full h-auto my-8 bg-white p-4" />
+        <p>
+          The VLM+GRASPS selection method
+          allows a VLM to make the ultimate choice of which object to
+          be picked next but prompts the VLM with grasp dependency
+          information. If the VLM selects an object that is not directly
+          pickable, then the approach is attempted again.
+        </p>
+        <p>
+          The overall prompt outline is nearly identical to
+          VLM-SELECT but it is given a scene description before the
+          task is specified. The scene is described as a list of grasp dependencies written in natural language
+          sentences of the form
+          “Object A is blocked by object B” or of the form “Object C
+          is graspable” if object C has valid grasps available. As explained in the subsection on grasping above, valid
+          grasps are
+          those whose IK solutions were found not to be in collision
+          with other objects or the static environment, in which the
+          gripper was found to not be in collision with the object to
+          be grasped, and in which the object to be grasped is the only
+          one between the gripper fingers at the grasp pose.
+        </p>
+        <p>The VLM prompt for this method is shown below:</p>
+        <pre id="dg-vlm-prompt" class="min-h-128 skeleton" scroll="h-128"></pre>
+      </div>
+    </div>
+  </section>
+  <section id="bibtex">
+    <div class="section-content">
+      <h2 class="header-3">BibTeX</h2>
+      <pre>
 @article{anonymous2026vlmclutter,
     author    = {Anonymous},
     title     = {Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?},
-    journal   = {},
+    journal   = {In Submission},
     year      = {2026},
 }</pre>
-      </div>
-    </section>
-    <script type="module" src="./src/main.ts"></script>
-  </body>
+    </div>
+  </section>
+  <script type="module" src="./src/main.ts"></script>
+</body>
+
 </html>

@@ -1,8 +1,7 @@
 import {
+  allSimImages,
   convertObjMJCFNameToEnglish,
   getSceneImageInfo,
-  structuredImages,
-  unstructuredImages,
   type ImagesDataset,
 } from "../images";
 
@@ -43,10 +42,5 @@ export function initSimSceneBrowser(
 }
 
 export default function init() {
-  initSimSceneBrowser(
-    "unstructured_",
-    "Unstructured Scene",
-    unstructuredImages
-  );
-  initSimSceneBrowser("structured_", "Structured Scene", structuredImages);
+  initSimSceneBrowser("sim_", "Simulated Scene", allSimImages);
 }
