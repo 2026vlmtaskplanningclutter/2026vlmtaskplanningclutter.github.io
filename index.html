@@ -87,7 +87,7 @@
     </section>
     <section>
       <div class="section-content">
-        <h2 class="text-4xl font-semibold mb-4">Dataset</h2>
+        <h2 id="scenes" class="text-4xl font-semibold mb-4">Scenes</h2>
         <div class="mb-8">
           <h3 class="text-2xl font-semibold mb-4">Unstructured</h3>
           <p>
@@ -147,7 +147,7 @@
     </section>
     <section>
       <div class="section-content">
-        <h2 class="text-4xl font-semibold mb-4">Methods</h2>   
+        <h2 id="methods" class="text-4xl font-semibold mb-4">Methods</h2>   
         <div>
           <h3 class="text-2xl mb-4">DG-SELECT</h3>
           <img src="/images/3-JustDG.png" class="w-full h-auto my-8"/>
@@ -174,6 +174,7 @@
             of which objects have valid grasps. Due to the stochastic output of the VLM, it is called again if it fails to select a graspable
             object.
           </p>
+          <p>The VLM prompt for this method is shown below:</p>
           <pre
           id="vlm-prompt"
           class="min-h-128 skeleton"
@@ -198,8 +199,9 @@
             to that of VLM-SELECT but the output format is now a json
             array of dependencies and the main part of the task prompt
             is specified as follows with &lt;candidates&gt; being replaced at
-            runtime with a json array of 'behind' dependencies:
+            runtime with a json array of 'behind' dependencies.
           </p>
+          <p>The VLM prompt for this method is shown below:</p>
           <pre
             id="vlm-dg-prompt"
             class="min-h-128 skeleton"
@@ -228,6 +230,7 @@
             be grasped, and in which the object to be grasped is the only
             one between the gripper fingers at the grasp pose.
           </p>
+          <p>The VLM prompt for this method is shown below:</p>
           <pre
             id="dg-vlm-prompt"
             class="min-h-128 skeleton"
@@ -236,17 +239,16 @@
         </div>
       </div>
     </section>
-    <section id="BibTeX">
+    <section id="bibtex">
       <div class="section-content">
         <h2 class="text-2xl font-semibold mb-4">BibTeX</h2>
         <pre>
-  @article{anonymous2026vlmclutter,
-      author    = {Anonymous},
-      title     = {Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?},
-      journal   = {},
-      year      = {2026},
-    }</pre
-        >
+@article{anonymous2026vlmclutter,
+    author    = {Anonymous},
+    title     = {Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?},
+    journal   = {},
+    year      = {2026},
+}</pre>
       </div>
     </section>
     <script type="module" src="./src/main.ts"></script>
