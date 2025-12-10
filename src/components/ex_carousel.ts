@@ -144,7 +144,6 @@ export function initExCarousels(query: string) {
       if (isTransitioning || Math.abs(delta) > 1) return;
       isTransitioning = true;
       currItemIndex += delta;
-      console.log("change item: el: ", el, " currItemIndex: ", currItemIndex);
       el.style.setProperty("--active-item", currItemIndex.toString());
       if (userInput) {
         resetAdvanceCooldown();
