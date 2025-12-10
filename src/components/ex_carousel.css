@@ -25,6 +25,14 @@
   max-width: calc(1 / var(--visible-items) * 100%);
 }
 
+.ex-carousel-left-btn {
+  @apply btn absolute left-6 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}
+
+.ex-carousel-right-btn {
+  @apply btn absolute right-6 top-1/2 transform translate-x-1/2 -translate-y-1/2;
+}
+
 .ex-carousel-dot {
   width: 1em;
   height: 1em;

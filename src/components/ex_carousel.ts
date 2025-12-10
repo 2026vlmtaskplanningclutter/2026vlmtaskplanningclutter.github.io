@@ -198,15 +198,15 @@ export function initExCarousels(query: string) {
       el.classList.add("px-8");
       const leftBtn = toHTML<HTMLButtonElement>(`
         <button
-          class="btn absolute left-6 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          class="ex-carousel-left-btn"
         >
-          <i class="fa-solid fa-chevron-left"></i>
+          <i class="fa-solid fa-chevron-left fa-lg"></i>
         </button>`);
       const rightBtn = toHTML<HTMLButtonElement>(`
         <button
-          class="btn absolute right-6 top-1/2 transform translate-x-1/2 -translate-y-1/2"
+          class="ex-carousel-right-btn"
         >
-          <i class="fa-solid fa-chevron-right"></i>
+          <i class="fa-solid fa-chevron-right fa-lg"></i>
         </button>`) as HTMLButtonElement;
 
       leftBtn.addEventListener("click", () => changeItem(-1));

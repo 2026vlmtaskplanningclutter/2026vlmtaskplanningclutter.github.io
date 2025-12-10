@@ -86,6 +86,10 @@
 }
 
 p {
+  @apply mb-4;
+}
+
+p:last-of-type {
   @apply mb-8;
 }
 
@@ -97,4 +101,12 @@ pre {
   @apply m-auto px-4 py-8 md:p-8 max-w-5xl;
 }
 
-@import "./components/ex_carousel.css";
+.header-2 {
+  @apply text-4xl font-semibold mb-4;
+}
+
+.header-3 {
+  @apply text-2xl font-semibold mb-2;
+}
+
+@import "./components/components.css";

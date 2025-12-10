@@ -51,7 +51,7 @@
     </section>
     <section>
       <div class="section-content flex flex-col">
-        <h2 class="text-4xl font-semibold mb-4">Abstract</h2>
+        <h2 class="header-2">Abstract</h2>
         <div class="flex flex-row flex-wrap md:flex-nowrap gap-8">
           <p class="max-w-full md:max-w-md lg:max-w-xl text-justify">
             Robots must effectively retrieve novel objects in clutter, where a
@@ -87,51 +87,51 @@
     </section>
     <section>
       <div class="section-content">
-        <h2 id="scenes" class="text-4xl font-semibold mb-4">Scenes</h2>
-        <div class="mb-8">
-          <h3 class="text-2xl font-semibold mb-4">Unstructured</h3>
+        <h2 id="scenes" class="header-2">Scenes</h2>
+        <div class="mb-16">
+          <h3 class="header-3">Unstructured</h3>
           <p>
             Out of our simulated scenes, we made "unstructured" scenes which have chaotic placement. 
             The target object is marked by the "0" segmentation in red. You can use the slider below to scrub through all of our unstructured scenes.
           </p>
           <div class="flex flex-row flex-wrap gap-4 h-fit">
             <div class="block w-80 grow">
-              <h3 class="text-xl mb-4 text-center">Front View (Camera)</h3>
-              <img id="unstructured_front_img" class="skeleton w-full h-100 object-cover"></img>
+              <h3 class="sim-img-label">Front View (Camera)</h3>
+              <img id="unstructured_front_img" class="sim-img"></img>
             </div>
             <div class="block w-80 grow">
-              <h3 class="text-xl mb-4 text-center">Back View</h3>
-              <img id="unstructured_back_img" class="skeleton w-full h-100 object-cover"></img>
+              <h3 class="sim-img-label">Back View</h3>
+              <img id="unstructured_back_img" class="sim-img"></img>
             </div>
           </div>
           <div class="w-full mt-4 block">
-            <h3 id="unstructured_img_name" class="mb-8 text-center h-1"></h3>
-            <input id="unstructured_img_slider" type="range" min="0" max="10" value="5" class="range range-md w-full" step="1" />
+            <h3 id="unstructured_img_name" class="sim-img-name"></h3>
+            <input id="unstructured_img_slider" type="range" min="0" max="10" value="5" class="range range-sm w-full" step="1" />
           </div>
         </div>
-        <div class="mb-8">
-          <h3 class="text-2xl font-semibold mb-4">Structured</h3>
+        <div class="mb-16">
+          <h3 class="header-3">Structured</h3>
           <p>
             Out of our simulated scenes, structured scenes had more organized object placement with clear stacking relationships.
             The target object is marked by the "0" segmentation in red. You can use the slider below to scrub through all of our structured scenes.
           </p>
           <div class="flex flex-row flex-wrap gap-4 h-fit">
             <div class="block w-80 grow">
-              <h3 class="text-xl mb-4 text-center">Front View (Camera)</h3>
-              <img id="structured_front_img" class="skeleton w-full h-100 object-cover"></img>
+              <h3 class="sim-img-label">Front View (Camera)</h3>
+              <img id="structured_front_img" class="sim-img"></img>
             </div>
             <div class="block w-80 grow">
-              <h3 class="text-xl mb-4 text-center">Back View</h3>
-              <img id="structured_back_img" class="skeleton w-full h-100 object-cover"></img>
+              <h3 class="sim-img-label">Back View</h3>
+              <img id="structured_back_img" class="sim-img"></img>
             </div>
           </div>
           <div class="w-full mt-4 block">
-            <h3 id="structured_img_name" class="mb-8 text-center h-1"></h3>
-            <input id="structured_img_slider" type="range" min="0" max="10" value="5" class="range range-md w-full" step="1" />
+            <h3 id="structured_img_name" class="sim-img-name"></h3>
+            <input id="structured_img_slider" type="range" min="0" max="10" value="5" class="range range-sm w-full" step="1" />
           </div>
         </div>
         <div>
-          <h3 class="text-2xl font-semibold mb-4">Real</h3>
+          <h3 class="header-3">Real</h3>
           <p>Three real scenes were used to test the our methods in the real world.</p>
           <div
             class="ex-carousel w-full h-128 mb-4 skeleton visible-items-1"
@@ -147,9 +147,9 @@
     </section>
     <section>
       <div class="section-content">
-        <h2 id="methods" class="text-4xl font-semibold mb-4">Methods</h2>   
-        <div>
-          <h3 class="text-2xl font-semibold mb-4">DG-SELECT</h3>
+        <h2 id="methods" class="header-2">Methods</h2>   
+        <div class="mb-16">
+          <h3 class="header-3">DG-SELECT</h3>
           <img src="/images/3-JustDG.png" class="w-full h-auto my-8"/>
           <p>
             An engineered selection method (DG-SELECT) is adapted
@@ -160,8 +160,8 @@
             from perceptual information without access to object models.
           </p>
         </div>
-        <div>
-          <h3 class="text-2xl font-semibold mb-4 mt-16">VLM-SELECT</h3>
+        <div class="mb-16">
+          <h3 class="header-3">VLM-SELECT</h3>
           <img src="/images/1-JustVLM-OWG.png" class="w-full h-auto my-8"/>
           <p>
             For the VLM-SELECT selection method, a VLM is
@@ -181,8 +181,8 @@
           scroll="h-128"
           ></pre>
         </div>
-        <div>
-          <h3 class="text-2xl font-semibold mb-4 mt-16">VLM-FIXES-DG</h3>
+        <div class="mb-16">
+          <h3 class="header-3">VLM-FIXES-DG</h3>
           <img src="/images/4-VLM-to-DG.png" class="w-full h-auto my-8"/>
           <p>
             A hybrid approach used both a VLM and dependency planning,
@@ -209,7 +209,7 @@
           ></pre>
         </div>
         <div>
-          <h3 class="text-2xl font-semibold mb-4 mt-16">VLM-GRASPS</h3>
+          <h3 class="header-3">VLM-GRASPS</h3>
           <img src="/images/2-DG-to-VLM.png" class="w-full h-auto my-8"/>
           <p>
             The VLM+GRASPS selection method
@@ -241,7 +241,7 @@
     </section>
     <section id="bibtex">
       <div class="section-content">
-        <h2 class="text-2xl font-semibold mb-4">BibTeX</h2>
+        <h2 class="header-3">BibTeX</h2>
         <pre>
 @article{anonymous2026vlmclutter,
     author    = {Anonymous},
