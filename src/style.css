@@ -90,7 +90,7 @@ p {
 }
 
 pre {
-  @apply font-code whitespace-pre-wrap p-8 bg-base-200;
+  @apply font-code wrap-anywhere sm:wrap-normal whitespace-pre-wrap p-4 md:p-8 bg-base-200;
 }
 
 .section-content {
