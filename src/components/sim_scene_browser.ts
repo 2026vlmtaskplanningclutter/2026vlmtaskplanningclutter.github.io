@@ -30,9 +30,7 @@ export function initSimSceneBrowser(
     frontImg.src = info.front;
     backImg.src = info.back;
     const objEnglishName = convertObjMJCFNameToEnglish(info.object);
-    imgName.innerHTML = `<span class="font-semibold">${scenePrefix} ${
-      index + 1
-    }</span>, pick <span class="font-semibold text-red-600">"${objEnglishName}"</span>`;
+    imgName.innerHTML = `<span class="font-semibold">${scenePrefix} ${info.scene}</span>, pick <span class="font-semibold text-red-600">"${objEnglishName}"</span>`;
   };
   imgSlider.min = "0";
   imgSlider.max = (infos.length - 1).toString();

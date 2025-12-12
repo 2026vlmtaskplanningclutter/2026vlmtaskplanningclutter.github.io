@@ -1,9 +1,9 @@
 .sim-img-container {
-  @apply block w-74 grow text-primary-content bg-primary outline-3 outline-primary;
+  @apply block w-74 grow text-primary-content bg-primary border-3 border-primary;
 }
 
 .sim-img-label {
-  @apply text-xl font-semibold p-2 text-center;
+  @apply font-semibold p-1 text-center;
 }
 
 .sim-img {

@@ -14,18 +14,29 @@ Ex:
 
 import { allSimImages, structuredImages, unstructuredImages } from "../images";
 import { posMod, toHTML } from "../utils";
-import { getExperimentVideoInfos, realExpVideos } from "../videos";
+import {
+  getExperimentVideoInfos,
+  realExpVideos,
+  simExpVideos,
+  type VideosDataset,
+} from "../videos";
 
-export function initExperimentsExCarousel(el: HTMLElement, itemClass: string) {
-  for (const info of getExperimentVideoInfos(realExpVideos)) {
+export function initExperimentsExCarousel(
+  el: HTMLElement,
+  itemClass: string,
+  dataset: VideosDataset,
+  sceneTitlePrefix: string = ""
+) {
+  for (const info of getExperimentVideoInfos(dataset)) {
+    const sceneTitle = sceneTitlePrefix + info.sceneTitle;
     const child = toHTML(`
       <div class="ex-carousel-item relative">
         <div class="ex-carousel-box-item">
-          <h4 class="ex-carousel-box-title flex-1 text-right md:hidden">${info.methodTitle} / ${info.sceneTitle}</h4>  
+          <h4 class="ex-carousel-box-title flex-1 text-right md:hidden">${info.methodTitle} / ${sceneTitle}</h4>  
           <div class="ex-carousel-box-title hidden flex-row justify-center gap-8 md:inline-flex">
             <h4 class="flex-1 text-right">${info.methodTitle}</h4>
             <h4 class="hidden md:block">/</h4>
-            <h4 class="flex-1 text-left">${info.sceneTitle}</h4>
+            <h4 class="flex-1 text-left">${sceneTitle}</h4>
           </div>
           <video muted controls loop playsinline class="min-h-0 grow w-full ${itemClass}" poster="${info.posterUrl}" preload="none">
             <source src="${info.url}" type="video/webm" />
@@ -53,8 +64,21 @@ export function initDatasetExCarousels(query: string) {
       case "unstructured":
         imageModules = unstructuredImages;
         break;
-      case "experiments":
-        initExperimentsExCarousel(el as HTMLElement, itemClass);
+      case "real_experiments":
+        initExperimentsExCarousel(
+          el as HTMLElement,
+          itemClass,
+          realExpVideos,
+          "Real "
+        );
+        continue;
+      case "sim_experiments":
+        initExperimentsExCarousel(
+          el as HTMLElement,
+          itemClass,
+          simExpVideos,
+          "Sim "
+        );
         continue;
     }
     for (const image in imageModules) {

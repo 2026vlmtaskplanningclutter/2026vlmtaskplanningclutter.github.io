@@ -1,9 +1,9 @@
 .real-img-container {
-  @apply flex flex-col sm:h-80 sm:flex-row gap-4;
+  @apply flex flex-col sm:h-80 sm:flex-row gap-3;
 }
 
 .real-img {
-  @apply grow shrink h-full flex flex-col text-primary-content bg-primary outline-3 outline-primary;
+  @apply grow shrink h-full flex flex-col text-primary-content bg-primary border-3 border-primary;
 }
 
 .real-img > img {
