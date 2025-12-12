@@ -2,6 +2,10 @@ import { replaceExt, toCapitalCase } from "./utils";
 
 export type VideosDataset = Record<string, { default: string }>;
 
+export const allVideoThumbnails: VideosDataset = import.meta.glob(
+  "/src/videos/**/*.jpg",
+  { eager: true, query: "?url" }
+);
 export const allVideos: VideosDataset = import.meta.glob(
   "/src/videos/**/*.mp4",
   {
@@ -41,14 +45,16 @@ export function getExperimentVideoInfos(dataset: VideosDataset) {
     let method = "";
     let scene = "";
     let experiment = "";
+    let ogPosterUrl = replaceExt(path, "jpg");
     if (matches) {
       method = matches[1];
       scene = matches[2];
       experiment = matches[3];
     }
+    console.log("ALL VIDEO THUMBNAILS: ", allVideoThumbnails);
     res.push({
       url: dataset[path].default,
-      posterUrl: replaceExt(dataset[path].default, "jpg"),
+      posterUrl: allVideoThumbnails[ogPosterUrl].default,
       method,
       scene,
       experiment: parseInt(experiment.replace("exp_", "")),
