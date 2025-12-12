@@ -14,27 +14,7 @@ Ex:
 
 import { allSimImages, structuredImages, unstructuredImages } from "../images";
 import { posMod, toHTML } from "../utils";
-import {
-  getExperimentVideoInfos,
-  previewExpVideos,
-  realExpVideos,
-} from "../videos";
-
-export function initExperimentsPreviewExCarousel(
-  el: HTMLElement,
-  itemClass: string
-) {
-  for (const info of getExperimentVideoInfos(previewExpVideos)) {
-    const child = toHTML(`
-      <div class="ex-carousel-item relative">
-        <video muted autoplay loop preload class="min-h-0 h-full grow w-full ${itemClass}" disablePictureInPicture="true">
-          <source src="${info.url}" type="video/webm" />
-        </video>
-      </div>
-      `);
-    el.appendChild(child);
-  }
-}
+import { getExperimentVideoInfos, realExpVideos } from "../videos";
 
 export function initExperimentsExCarousel(el: HTMLElement, itemClass: string) {
   for (const info of getExperimentVideoInfos(realExpVideos)) {
@@ -76,9 +56,6 @@ export function initDatasetExCarousels(query: string) {
       case "experiments":
         initExperimentsExCarousel(el as HTMLElement, itemClass);
         continue;
-      case "experiments_preview":
-        initExperimentsPreviewExCarousel(el as HTMLElement, itemClass);
-        continue;
     }
     for (const image in imageModules) {
       const url = imageModules[image].default;
@@ -104,7 +81,7 @@ export function initExCarousels(query: string) {
     const advanceInteractCooldown =
       parseInt(el.getAttribute("advance-interact-cooldown") ?? "10") * 1000;
     const visibleItems = parseInt(el.getAttribute("visible-items") ?? "0");
-    const cloneCount = 4;
+    const cloneCount = parseInt(el.getAttribute("clone-count") ?? "4");
     el.style.setProperty(
       "--total-items",
       (cloneCount * 2 + items.length).toString()

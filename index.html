@@ -84,11 +84,17 @@
         </p>
         <img src="/images/robot.png" class="h-80 md:h-auto grow min-w-0 object-cover object-center" />
       </div>
-      <div
-        class="ex-carousel w-full h-42 md:h-77 mt-4 skeleton visible-items-2 md:visible-items-3 item-border-1-5"
-        img-class="object-cover p-1 rounded-2xl"
-        dataset="experiments_preview"
-      ></div>
+      <div class="preview-exp-container">
+        <video muted autoplay preload>
+          <source src="/videos/preview_exp/dg_only__scene_1__exp_1__x8.webm" type="video/webm">
+        </video>
+        <video muted autoplay preload>
+          <source src="/videos/preview_exp/dg_vlm__scene_3__exp_1__x8.webm" type="video/webm">
+        </video>
+        <video muted autoplay class="hidden md:block">
+          <source src="/videos/preview_exp/vlm_dg__scene_3__exp_1__x8.webm" type="video/webm">
+        </video>
+      </div>
     </div>
   </section>
   <section>

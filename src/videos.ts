@@ -16,13 +16,6 @@ export const realExpVideos: VideosDataset = import.meta.glob(
     query: "?url",
   }
 );
-export const previewExpVideos: VideosDataset = import.meta.glob(
-  "/src/videos/preview_exp/**/*.webm",
-  {
-    eager: true,
-    query: "?url",
-  }
-);
 
 const nameRegex = /(\w*)__(\w*)__(\w*)__/;
 const methodToTitle: { [key: string]: string } = {
