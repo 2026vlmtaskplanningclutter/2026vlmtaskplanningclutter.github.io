@@ -4,6 +4,11 @@ export function toHTML<T extends HTMLElement>(text: string): T {
   return wrapper.firstElementChild as T;
 }
 
+export function replaceExt(path: string, new_ext: string) {
+  let [basePath, _] = splitExt(path);
+  return `${basePath}.${new_ext}`;
+}
+
 export function posMod(n: number, mod: number): number {
   return ((n % mod) + mod) % mod;
 }

@@ -27,7 +27,7 @@ export function initExperimentsExCarousel(el: HTMLElement, itemClass: string) {
             <h4 class="hidden md:block">/</h4>
             <h4 class="flex-1 text-left">${info.sceneTitle}</h4>
           </div>
-          <video muted controls loop playsinline class="min-h-0 grow w-full ${itemClass}" preload="metadata">
+          <video muted controls loop playsinline class="min-h-0 grow w-full ${itemClass}" poster="${info.posterUrl}" preload="none">
             <source src="${info.url}" type="video/webm" />
           </video>
         </div>  

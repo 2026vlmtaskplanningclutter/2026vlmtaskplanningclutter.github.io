@@ -1,4 +1,4 @@
-import { toCapitalCase } from "./utils";
+import { replaceExt, toCapitalCase } from "./utils";
 
 export type VideosDataset = Record<string, { default: string }>;
 
@@ -29,6 +29,7 @@ const methodToTitle: { [key: string]: string } = {
 export function getExperimentVideoInfos(dataset: VideosDataset) {
   let res: {
     url: string;
+    posterUrl: string;
     method: string;
     scene: string;
     experiment: number;
@@ -47,6 +48,7 @@ export function getExperimentVideoInfos(dataset: VideosDataset) {
     }
     res.push({
       url: dataset[path].default,
+      posterUrl: replaceExt(dataset[path].default, "jpg"),
       method,
       scene,
       experiment: parseInt(experiment.replace("exp_", "")),
