@@ -43,8 +43,8 @@
   prefersdark: false;
   color-scheme: "light";
   --color-base-100: oklch(100% 0 0);
-  --color-base-200: oklch(97% 0 0);
-  --color-base-300: oklch(94% 0 0);
+  --color-base-200: oklch(96% 0 0);
+  --color-base-300: oklch(93% 0 0);
   --color-base-content: oklch(0% 0 0);
   --color-primary: oklch(15.906% 0 0);
   --color-primary-content: oklch(100% 0 0);
@@ -93,12 +93,22 @@ p:last-of-type {
   @apply mb-8;
 }
 
-pre {
+p:last-of-type.no-p-margin,
+p.no-p-margin {
+  @apply mb-0;
+}
+
+pre.code {
   @apply font-code text-sm wrap-anywhere sm:wrap-normal whitespace-pre-wrap p-4 md:p-8 bg-base-200;
 }
 
 .section-content {
-  @apply m-auto px-4 py-8 md:px-8 md:py-16 max-w-5xl;
+  @apply m-auto px-4 py-8 md:px-8 md:pt-16 md:pb-0 max-w-5xl;
+}
+
+.standalone,
+section:last-of-type > .section-content {
+  @apply md:py-16;
 }
 
 .header-2 {

@@ -12,31 +12,45 @@ Ex:
 ></div>
 */
 
+import { allSimImages, structuredImages, unstructuredImages } from "../images";
+import { posMod, toHTML } from "../utils";
 import {
-  allSimImages,
-  realImages,
-  structuredImages,
-  unstructuredImages,
-} from "../images";
-import {
-  getBaseNameFromPath,
-  posMod,
-  splitExt,
-  toCapitalCase,
-  toHTML,
-} from "../utils";
+  getExperimentVideoInfos,
+  previewExpVideos,
+  realExpVideos,
+} from "../videos";
 
-export function initRealDatasetExCarousel(el: HTMLElement, itemClass: string) {
-  for (const imageUrl in realImages) {
-    const realUrl = realImages[imageUrl].default;
-    const baseName = getBaseNameFromPath(imageUrl);
-    const [fileName, _] = splitExt(baseName);
+export function initExperimentsPreviewExCarousel(
+  el: HTMLElement,
+  itemClass: string
+) {
+  for (const info of getExperimentVideoInfos(previewExpVideos)) {
     const child = toHTML(`
       <div class="ex-carousel-item relative">
-        <img src="${realUrl}" class="h-full w-full ${itemClass}"/>
-        <h3 class="absolute top-8 left-8 text-white text-2xl font-semibold">${toCapitalCase(
-          fileName
-        )}</h3>
+        <video muted autoplay loop preload class="min-h-0 h-full grow w-full ${itemClass}" disablePictureInPicture="true">
+          <source src="${info.url}" type="video/webm" />
+        </video>
+      </div>
+      `);
+    el.appendChild(child);
+  }
+}
+
+export function initExperimentsExCarousel(el: HTMLElement, itemClass: string) {
+  for (const info of getExperimentVideoInfos(realExpVideos)) {
+    const child = toHTML(`
+      <div class="ex-carousel-item relative">
+        <div class="ex-carousel-box-item">
+          <h4 class="ex-carousel-box-title flex-1 text-right md:hidden">${info.methodTitle} / ${info.sceneTitle}</h4>  
+          <div class="ex-carousel-box-title hidden flex-row justify-center gap-8 md:inline-flex">
+            <h4 class="flex-1 text-right">${info.methodTitle}</h4>
+            <h4 class="hidden md:block">/</h4>
+            <h4 class="flex-1 text-left">${info.sceneTitle}</h4>
+          </div>
+          <video muted controls loop playsinline class="min-h-0 grow w-full ${itemClass}" preload="metadata">
+            <source src="${info.url}" type="video/webm" />
+          </video>
+        </div>  
       </div>
       `);
     el.appendChild(child);
@@ -59,9 +73,12 @@ export function initDatasetExCarousels(query: string) {
       case "unstructured":
         imageModules = unstructuredImages;
         break;
-      case "real":
-        initRealDatasetExCarousel(el as HTMLElement, itemClass);
-        return;
+      case "experiments":
+        initExperimentsExCarousel(el as HTMLElement, itemClass);
+        continue;
+      case "experiments_preview":
+        initExperimentsPreviewExCarousel(el as HTMLElement, itemClass);
+        continue;
     }
     for (const image in imageModules) {
       const url = imageModules[image].default;
@@ -88,6 +105,10 @@ export function initExCarousels(query: string) {
       parseInt(el.getAttribute("advance-interact-cooldown") ?? "10") * 1000;
     const visibleItems = parseInt(el.getAttribute("visible-items") ?? "0");
     const cloneCount = 4;
+    el.style.setProperty(
+      "--total-items",
+      (cloneCount * 2 + items.length).toString()
+    );
     el.style.setProperty("--clone-items", cloneCount.toString());
     if (visibleItems > 1) {
       el.style.setProperty("--visible-items", visibleItems.toString());

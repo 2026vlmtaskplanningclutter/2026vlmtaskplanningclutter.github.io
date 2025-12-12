@@ -1,0 +1,15 @@
+.real-img-container {
+  @apply flex flex-col sm:h-80 sm:flex-row gap-4;
+}
+
+.real-img {
+  @apply grow shrink h-full flex flex-col text-primary-content bg-primary outline-3 outline-primary;
+}
+
+.real-img > img {
+  @apply aspect-3/2 min-w-0 object-cover sm:aspect-auto sm:h-full;
+}
+
+.real-img > h4 {
+  @apply text-center font-semibold my-1;
+}

@@ -21,17 +21,10 @@ export const unstructuredImages: ImagesDataset = import.meta.glob(
     query: "?url",
   }
 );
-export const realImages: ImagesDataset = import.meta.glob(
-  "/src/images/real/**/*.{png,jpg,jpeg,svg}",
-  {
-    eager: true,
-    query: "?url",
-  }
-);
 
 const nameRegex = /(\w*)__(\w*)/;
 
-export function getSceneImageInfo(dataset: ImagesDataset) {
+export function getSceneImageInfos(dataset: ImagesDataset) {
   let res: { front: string; back: string; scene: string; object: string }[] =
     [];
   for (let path in dataset) {

@@ -1,11 +1,15 @@
+.sim-img-container {
+  @apply block w-74 grow text-primary-content bg-primary outline-3 outline-primary;
+}
+
 .sim-img-label {
-  @apply text-xl font-semibold p-2 text-center bg-primary border-3 border-primary text-base-100;
+  @apply text-xl font-semibold p-2 text-center;
 }
 
 .sim-img {
-  @apply skeleton rounded-none border-3 border-primary w-full h-100 object-cover;
+  @apply skeleton rounded-none w-full h-100 object-cover;
 }
 
 .sim-img-name {
-  @apply mb-8 text-center h-1 font-medium;
+  @apply mb-8 text-center h-1;
 }

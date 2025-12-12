@@ -10,7 +10,9 @@
   @apply absolute w-full h-full flex flex-nowrap;
   transform: translateX(
     calc(
-      -1 / var(--visible-items) * (var(--active-item) + var(--clone-items)) * 100%
+      -1 / var(--visible-items) * (var(--active-item) + var(--clone-items)) * (
+          100% + 2 * var(--x-border)
+        ) - var(--x-border)
     )
   );
   transition: transform 0.25s ease-out;
@@ -20,9 +22,31 @@
   height: calc(100% - 1.5em);
 }
 
+:root {
+  --x-border: 0;
+}
+
 .ex-carousel-item {
-  @apply shrink-0 box-border;
-  max-width: calc(1 / var(--visible-items) * 100%);
+  @apply shrink-0 box-border w-dvw;
+  padding-left: var(--x-border);
+  padding-right: var(--x-border);
+  max-width: calc(1 / var(--visible-items) * (100% + 2 * var(--x-border)));
+}
+
+.ex-carousel.item-border-1 {
+  --x-border: calc(var(--spacing) * 1);
+}
+
+.ex-carousel.item-border-1-5 {
+  --x-border: calc(var(--spacing) * 1.5);
+}
+
+.ex-carousel.item-border-2 {
+  --x-border: calc(var(--spacing) * 2);
+}
+
+.ex-carousel.item-border-4 {
+  --x-border: calc(var(--spacing) * 4);
 }
 
 .ex-carousel-left-btn {
@@ -48,6 +72,14 @@
 .ex-carousel-dots {
   @apply flex gap-2 items-end w-full justify-center;
   height: 1.5em;
+}
+
+.ex-carousel-box-item {
+  @apply flex flex-col h-full grow text-primary-content bg-primary border-3 border-primary box-border;
+}
+
+.ex-carousel-box-item > .ex-carousel-box-title {
+  @apply text-center font-semibold my-1;
 }
 
 @utility visible-items-4 {

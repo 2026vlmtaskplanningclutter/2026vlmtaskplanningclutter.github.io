@@ -24,7 +24,7 @@
 <body>
   </div>
   <section class="bg-base-200 min-h-[50vh] flex">
-    <div class="section-content max-w-2xl min-h-full">
+    <div class="section-content standalone max-w-2xl min-h-full">
       <!-- Title -->
       <h1 class="text-5xl font-semibold">
         Are VLMs Effective Task Planners for Robotic Object Retrieval in
@@ -41,10 +41,14 @@
         <a><sup>1</sup>Organization</a>
       </div>
       <!-- Buttons -->
-      <div class="flex flex-row mt-4">
+      <div class="flex flex-row mt-4 gap-4">
         <a class="btn btn-primary" href="/paper.pdf" target="_blank">
           <i class="fa-solid fa-file-pdf"></i>
           Paper
+        </a>
+        <a class="btn btn-primary" disabled target="_blank">
+          <i class="fa-solid fa-code"></i>
+          Code (Coming Soon)
         </a>
       </div>
     </div>
@@ -80,6 +84,11 @@
         </p>
         <img src="/images/robot.png" class="h-80 md:h-auto grow min-w-0 object-cover object-center" />
       </div>
+      <div
+        class="ex-carousel w-full h-42 md:h-77 mt-4 skeleton visible-items-2 md:visible-items-3 item-border-1-5"
+        img-class="object-cover p-1 rounded-2xl"
+        dataset="experiments_preview"
+      ></div>
     </div>
   </section>
   <section>
@@ -93,11 +102,11 @@
           marked by the "0" segmentation in red. You can use the slider below to scrub through the scenes.
         </p>
         <div class="flex flex-row flex-wrap gap-4 h-fit">
-          <div class="block w-80 grow">
+          <div class="sim-img-container">
             <h3 class="sim-img-label">Front View (Camera)</h3>
             <img id="sim_front_img" class="sim-img"></img>
           </div>
-          <div class="block w-80 grow">
+          <div class="sim-img-container">
             <h3 class="sim-img-label">Back View</h3>
             <img id="sim_back_img" class="sim-img"></img>
           </div>
@@ -110,8 +119,20 @@
       <div>
         <h3 class="header-3">Real</h3>
         <p>Three real scenes were used to test the our methods in the real world.</p>
-        <div class="ex-carousel w-full h-128 mb-4 skeleton visible-items-1" img-class="object-cover p-1 rounded-2xl"
-          dataset="real" advance="5" dots buttons></div>
+        <div class="real-img-container">
+          <div class="real-img">
+            <h4>Real Scene 1</h4>
+            <img src="/images/real/scene_1.png"/>
+          </div>
+          <div class="real-img">
+            <h4>Real Scene 2</h4>
+            <img src="/images/real/scene_2.png"/>
+          </div>
+          <div class="real-img">
+            <h4>Real Scene 3</h4>
+            <img src="/images/real/scene_3.png"/>
+           </div>
+        </div>
       </div>
     </div>
     </div>
@@ -119,7 +140,7 @@
   <section>
     <div class="section-content">
       <h2 id="methods" class="header-2">Methods</h2>
-      <div class="mb-16">
+      <div class="mb-8">
         <h3 class="header-3">DG-SELECT</h3>
         <img src="/images/3-JustDG.png" class="w-full h-auto my-8 bg-white p-4" />
         <p>
@@ -131,7 +152,7 @@
           from perceptual information without access to object models.
         </p>
       </div>
-      <div class="mb-16">
+      <div class="mb-8">
         <h3 class="header-3">VLM-SELECT</h3>
         <img src="/images/1-JustVLM-OWG.png" class="w-full h-auto my-8 bg-white p-4" />
         <p>
@@ -147,9 +168,9 @@
           object.
         </p>
         <p>The VLM prompt for this method is shown below:</p>
-        <pre id="vlm-prompt" class="min-h-128 skeleton" scroll="h-128"></pre>
+        <pre id="vlm-prompt" class="code min-h-128 skeleton" scroll="h-128"></pre>
       </div>
-      <div class="mb-16">
+      <div class="mb-8">
         <h3 class="header-3">VLM-FIXES-DG</h3>
         <img src="/images/4-VLM-to-DG.png" class="w-full h-auto my-8 bg-white p-4" />
         <p>
@@ -171,7 +192,7 @@
           runtime with a json array of 'behind' dependencies.
         </p>
         <p>The VLM prompt for this method is shown below:</p>
-        <pre id="vlm-dg-prompt" class="min-h-128 skeleton" scroll="h-128"></pre>
+        <pre id="vlm-dg-prompt" class="code min-h-128 skeleton" scroll="h-128"></pre>
       </div>
       <div>
         <h3 class="header-3">VLM-GRASPS</h3>
@@ -198,14 +219,37 @@
           one between the gripper fingers at the grasp pose.
         </p>
         <p>The VLM prompt for this method is shown below:</p>
-        <pre id="dg-vlm-prompt" class="min-h-128 skeleton" scroll="h-128"></pre>
+        <pre id="dg-vlm-prompt" class="code min-h-128 skeleton" scroll="h-128"></pre>
       </div>
     </div>
+  </section>
+  <section id="experiments">
+    <div class="section-content">
+      <h2 class="header-2">Experiments</h2>
+      <h3 class="header-3">Real</h3>
+      <p>We evaluated our methods across three real scenes. A sample of real experiements is shown below. These videos include only the grasping motions and are sped up by a factor of 8.</p>
+      <div
+        class="ex-carousel w-full h-128 mb-4 skeleton visible-items-1 md:visible-items-2 item-border-1-5"
+        img-class="object-cover p-1 rounded-2xl"
+        dataset="experiments"
+        dots
+        buttons
+      ></div>
+      <!-- <h3 class="header-3">Simulated</h3>
+      <p>We evaluated our methods across 23 simulated scenes:</p>
+      <div
+        class="ex-carousel w-full h-128 mb-4 skeleton visible-items-1 md:visible-items-2 item-border-1-5"
+        img-class="object-cover p-1 rounded-2xl"
+        dataset="experiments"
+        dots
+        buttons
+      ></div> -->
+   </div>
   </section>
   <section id="bibtex">
     <div class="section-content">
       <h2 class="header-3">BibTeX</h2>
-      <pre>
+      <pre class="code">
 @article{anonymous2026vlmclutter,
     author    = {Anonymous},
     title     = {Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?},
