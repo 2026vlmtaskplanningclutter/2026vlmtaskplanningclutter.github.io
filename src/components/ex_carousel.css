@@ -2,6 +2,10 @@
   @apply relative;
 }
 
+.ex-carousel-main {
+  @apply h-full;
+}
+
 .ex-carousel-mask {
   @apply overflow-hidden h-full relative no-scrollbar;
 }
@@ -18,8 +22,12 @@
   transition: transform 0.25s ease-out;
 }
 
-.ex-carousel[dots] > .ex-carousel-mask {
+.ex-carousel[dots] > .ex-carousel-main {
   height: calc(100% - 1.5em);
+}
+
+.ex-carousel[buttons] {
+  @apply px-4 md:px-8;
 }
 
 :root {
@@ -50,11 +58,11 @@
 }
 
 .ex-carousel-left-btn {
-  @apply btn absolute left-6 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  @apply btn absolute left-4 md:left-8 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-16 md:w-14 md:h-10;
 }
 
 .ex-carousel-right-btn {
-  @apply btn absolute right-6 top-1/2 transform translate-x-1/2 -translate-y-1/2;
+  @apply btn absolute right-4 md:right-8 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-8 h-16 md:w-14 md:h-10;
 }
 
 .ex-carousel-dot {

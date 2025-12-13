@@ -104,8 +104,8 @@ export function initExCarousels(query: string) {
 
     const advanceInteractCooldown =
       parseInt(el.getAttribute("advance-interact-cooldown") ?? "10") * 1000;
-    const visibleItems = parseInt(el.getAttribute("visible-items") ?? "0");
-    const cloneCount = parseInt(el.getAttribute("clone-count") ?? "4");
+    const visibleItems = parseInt(el.getAttribute("visible-items") ?? "1");
+    const cloneCount = 1;
     el.style.setProperty(
       "--total-items",
       (cloneCount * 2 + items.length).toString()
@@ -116,8 +116,10 @@ export function initExCarousels(query: string) {
     }
     el.style.setProperty("--active-item", "0");
 
+    const carouselMain = toHTML(`<div class="ex-carousel-main"></div>`);
+    el.appendChild(carouselMain);
     const carouselMask = toHTML(`<div class="ex-carousel-mask"></div>`);
-    el.appendChild(carouselMask);
+    carouselMain.appendChild(carouselMask);
     const carouselContent = toHTML(`<div class="ex-carousel-content"></div>`);
     carouselMask.appendChild(carouselContent);
     for (const item of items) {
@@ -217,7 +219,6 @@ export function initExCarousels(query: string) {
     }
 
     if (el.hasAttribute("buttons")) {
-      el.classList.add("px-8");
       const leftBtn = toHTML<HTMLButtonElement>(`
         <button
           class="ex-carousel-left-btn"
@@ -234,8 +235,8 @@ export function initExCarousels(query: string) {
       leftBtn.addEventListener("click", () => changeItem(-1));
       rightBtn.addEventListener("click", () => changeItem(1));
 
-      el.append(leftBtn);
-      el.appendChild(rightBtn);
+      carouselMain.append(leftBtn);
+      carouselMain.appendChild(rightBtn);
     }
 
     let carouselDots: HTMLElement | null = null;
