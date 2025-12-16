@@ -27,7 +27,9 @@ export function initExperimentsExCarousel(
   dataset: VideosDataset,
   sceneTitlePrefix: string = ""
 ) {
-  for (const info of getExperimentVideoInfos(dataset)) {
+  let videoInfos = getExperimentVideoInfos(dataset);
+  videoInfos.sort((a, b) => a.scene.localeCompare(b.scene));
+  for (const info of videoInfos) {
     const sceneTitle = sceneTitlePrefix + info.sceneTitle;
     const child = toHTML(`
       <div class="ex-carousel-item relative">
