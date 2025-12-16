@@ -5,7 +5,7 @@ This is the repository for the website of the `Are VLMs Effective Task Planners 
 ## Bibtex
 
 ```
-@article{anonymous2026vlmclutter,
+@inproceedings{anonymous2026vlmclutter,
   author    = {Anonymous},
   title     = {Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?},
   journal   = {In Submission},
