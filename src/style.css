@@ -73,7 +73,7 @@
 }
 
 @theme {
-  --breakpoint-xs: 28rem;
+  --breakpoint-xs: 20rem;
   --font-sans: "Google Sans Flex", sans-serif;
   --font-code: "Google Sans Code", monospace;
 }
