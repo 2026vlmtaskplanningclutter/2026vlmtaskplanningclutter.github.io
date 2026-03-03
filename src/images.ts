@@ -70,6 +70,11 @@ export const objMJCFtoName: { [key: string]: string } = {
   obj_000070: "Sticky Notes Pack",
   obj_000050: "Tomato Sauce Can",
   obj_000053: "Chocolate Pudding Box",
+  obj_000079: "Glue Bottle",
+  obj_000066: "BBQ Bottle",
+  obj_000047: "Corn Can",
+  obj_000025: "Red Cup",
+  obj_000006: "Peach"
 };
 
 export function convertObjMJCFNameToEnglish(mjcfName: string) {
