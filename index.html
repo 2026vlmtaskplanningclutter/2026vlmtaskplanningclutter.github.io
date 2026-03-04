@@ -421,16 +421,33 @@
             <img src="/images/charts/sim_3.png" />
           </div>
           <p class="para">
-            Once scenes were validated, 5 different human experts
-            were asked to perform object selection on each of the 40
+            In addition to the four object selection methods, a random method was included as a baseline. 
+            Five different human experts were also asked to perform object selection on each of the 40
             problems, for a total of 200 human trials. The corresponding
             approach is marked as HUMAN. Each selection strategy
             (RANDOM, VLM-SELECT, DG-SELECT, VLM+GRASPS,
             VLM-FIXES-DG) was evaluated 10 times on each problem
             for a total of 400 experiments per approach. In simulated
             experiments, ground-truth object instance segmentation from
-            MuJoCo is used to isolate the evaluation of object sequenc-
-            ing.
+            MuJoCo is used to isolate the evaluation of object sequencing.
+          </p>
+          <p class="para">
+            The results show that using a VLM out of the box (despite
+            being pretrained for robotics) is only marginally safer than
+            making random selections while taking more total picks.
+            The dependency graph approach, DG-SELECT, is safer than
+            RANDOM and VLM-SELECT but results in increased computation 
+            and critically depends on the parameters of the heuristics, 
+            which were optimized for these experiments. Feeding
+            the grasp information into the VLM as in the VLM+GRASPS
+            approach reduces dependence on heuristic parameters and
+            exceeds the success rate of DG-SELECT. The number of
+            pick actions, however, to solve TORC did increase slightly.
+            The VLM-FIXES-DG approach, which used the VLM to
+            adjust the dependency graph was the approach with the
+            highest number of retrievals without drops and matched
+            the number of pick actions achieved by the DG-SELECT
+            approach but had a higher computational cost.
           </p>
         </div>
         <div>
@@ -441,6 +458,39 @@
             <img src="/images/charts/real_2.png" />
             <img src="/images/charts/real_3.png" />
           </div>
+          <p class="para">
+            The real-world experiments were performed with a single
+            arm of a Yaskawa Motoman SDA10F robot using a Robotiq
+            85 gripper and a Zed Mini camera. Grounding SAM 2 is used for object segmentation.
+          </p>
+          <p class="para">
+            On the real robot, the task planning approaches were
+            evaluated on 3 difference scenes, where each method was
+            repeated 3 times per scene, for a total of 9 experiments
+            per method and 45 total experiments. These scenes were
+            constructed by placing household objects on a large grid on
+            a tabletop. Their positions was recorded for replication to
+            be evaluated across the methods. The scenes were designed
+            such that they required at least 2 picks to retrieve the target. 
+            Results are reported similarly to the simulated scenes.
+          </p>
+          <p class="para">
+            The real world experiments yield similar observations to
+            the simulated experiments despite the observation noise.
+            While the real system consumes more noisy perception
+            data, such as the potential for incorrect target detection,
+            success was quite high on the real scenes. A potential
+            advantage of the VLM-based solutions is that they experience
+            a smaller real-to-sim gap given real image input. Still, the
+            VLM-SELECT approach underperforms the alternatives, as it
+            has the lower success rate and the highest number of picks
+            required. The methods that make the final selection via a 
+            Dependency Graph, i.e., DG-SELECT and VLM-FIXES-DG,
+            have higher success rate but do experience failures. The
+            VLM+GRASPS hybrid solution was the best performing
+            algorithmic alternatively managing to solve all real world
+            examples, similar to the human experts.
+          </p>
         </div>
       </div>
     </section>
