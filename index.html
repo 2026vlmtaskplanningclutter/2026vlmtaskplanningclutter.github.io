@@ -168,13 +168,13 @@
     <section id="scenes">
       <div class="section-content">
         <h2 class="header-2">Scenes</h2>
-        <div class="mb-16">
+        <div class="mb-8">
           <h3 class="header-3">Simulated</h3>
           <p class="para">
-            23 simulated scenes were used to test our methods. We used MuJoCo
-            for physics simulation and perception. These scenes were obtained by
-            programmatically generating a large set of scenes that were then
-            filtered down into a set of 23 by scripts and human evaluation.
+            We created 40 unique experiments using 22 simulated scenes, with each scene containing a unique target object. Physics simulation and perception were performed using MuJoCo.
+            These scenes were obtained by programmatically generating a large set of 
+            scenes that were then filtered down by scripts and human evaluation, as documented below. 
+            and multiple objects from each scene were used as target objects, leading to a total of.
             Therefore, the final set of scenes have non-conseuctive IDs. The
             following is an interactive visualization of our simulated scenes.
             The target object is marked by the "0" segmentation in red. You can
@@ -204,9 +204,64 @@
           </div>
         </div>
         <div>
+          <h4 class="header-4">Dataset Generation</h3>
+          <p class="para">
+            An important aspect of the evaluation involved generating useful
+            scenes that are both challenging, i.e., they require multiple object
+            removals till the target is reachable, but are also solvable.
+            Randomly placing objects can frequently lead to scenes without valid
+            grasps. These failure modes may arise due to poor grasp generation
+            or due to complex object-object interactions during retraction,
+            which cannot be trivially resolved even by leveraging privileged
+            perception in simulation. Therefore, in order to focus on the task
+            planning instead of other parts of the pipeline, generating the
+            scene dataset consisted of manual labeling and tuning, as well as
+            filtering using hand-specified rules. This resulted in a dataset of
+            40 TORC experiments, each with a set of objects placed on a tabletop and
+            a target object to be retrieved.
+          </p>
+          <p class="para">
+            To initialize the process, scenes were taken from GraspClutter6d.
+            Each scene from GraspClutter6d consisted of a cluttered arrangement
+            of objects as well as ground-truth grasps for each object. To
+            produce the retrieval-focused scene dataset, the following steps
+            were executed:
+          </p>
+          <ol class="list-decimal ml-12 mb-4 space-y-4">
+            <li>
+              For each scene, an automated script placed objects at the middle
+              of a tabletop in MuJoCo.
+            </li>
+            <li>
+              A human annotator manually labeled candidate targets in each
+              scene, with preference for occluded objects.
+            </li>
+            <li>
+              Candidate targets that were irretrievable were then pruned: For
+              each target, all objects
+              <b class="font-bold">(1)</b> directly in front of it,
+              <b class="font-bold">(2)</b> within 15 cm to the left or right,
+              and <b class="font-bold">(3)</b> taller than the target were
+              recorded. If any of these objects possessed no ground-truth grasps
+              that were collision-free (with the static scene) and IK-feasible,
+              the target was pruned.
+            </li>
+            <li>
+              Scenes were iteratively refined based on feedback from humans.
+              People executed the task planning. If the expert
+              selected the target immediately without removing any other
+              objects, the TORC problem was discarded as trivial. Conversely, if
+              the expert was unable to retrieve the target even after attempting
+              to remove the majority of objects, the scene was adjusted (e.g.,
+              by modifying object poses or adding/removing objects) until it
+              admitted a solution with a task sequence of at least two steps.
+            </li>
+          </ol>
+        </div>
+        <div>
           <h3 class="header-3">Real</h3>
           <p class="para">
-            Three real scenes were used to test the our methods.
+            We created three unique experiments using three real-world scenes to test our methods in a realistic setting.
           </p>
           <div class="real-img-container">
             <div class="real-img">
@@ -325,7 +380,7 @@
         <h2 class="header-2">Experiments</h2>
         <h3 class="header-3">Simulated</h3>
         <p class="para">
-          We evaluated our methods across 23 simulated scenes with five repeated
+          We evaluated our methods across 40 simulated scenes with eight repeated
           runs per scene. Since our data collection method does not record
           videos of runs to save on storage, we've recorded a few simulated
           demonstrations to illustrate how a run might look like. These
@@ -365,6 +420,18 @@
             <img src="/images/charts/sim_2.png" />
             <img src="/images/charts/sim_3.png" />
           </div>
+          <p class="para">
+            Once scenes were validated, 5 different human experts
+            were asked to perform object selection on each of the 40
+            problems, for a total of 200 human trials. The corresponding
+            approach is marked as HUMAN. Each selection strategy
+            (RANDOM, VLM-SELECT, DG-SELECT, VLM+GRASPS,
+            VLM-FIXES-DG) was evaluated 10 times on each problem
+            for a total of 400 experiments per approach. In simulated
+            experiments, ground-truth object instance segmentation from
+            MuJoCo is used to isolate the evaluation of object sequenc-
+            ing.
+          </p>
         </div>
         <div>
           <h3 class="header-3">Real</h3>
