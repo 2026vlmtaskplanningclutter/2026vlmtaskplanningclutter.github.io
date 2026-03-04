@@ -8,17 +8,17 @@ import {
 export function initSimSceneBrowser(
   prefix: string = "",
   scenePrefix: string = "Scene",
-  imagesDataset: ImagesDataset
+  imagesDataset: ImagesDataset,
 ) {
   const infos = getSceneImageInfos(imagesDataset);
   const frontImg = document.getElementById(
-    `${prefix}front_img`
+    `${prefix}front_img`,
   ) as HTMLImageElement;
   const backImg = document.getElementById(
-    `${prefix}back_img`
+    `${prefix}back_img`,
   ) as HTMLImageElement;
   const imgSlider = document.getElementById(
-    `${prefix}img_slider`
+    `${prefix}img_slider`,
   ) as HTMLInputElement;
   const imgName = document.getElementById(`${prefix}img_name`) as HTMLElement;
 
@@ -30,7 +30,7 @@ export function initSimSceneBrowser(
     frontImg.src = info.front;
     backImg.src = info.back;
     const objEnglishName = convertObjMJCFNameToEnglish(info.object);
-    imgName.innerHTML = `<span class="font-semibold">${scenePrefix} ${info.scene}</span>, pick <span class="font-semibold text-red-600">"${objEnglishName}"</span>`;
+    imgName.innerHTML = `<span class="font-semibold">${scenePrefix} ${info.scene}</span>,<br class="sm:hidden"> pick <span class="font-semibold text-red-600">"${objEnglishName}"</span>`;
   };
   imgSlider.min = "0";
   imgSlider.max = (infos.length - 1).toString();

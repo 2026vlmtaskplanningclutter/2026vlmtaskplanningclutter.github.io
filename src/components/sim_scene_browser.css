@@ -11,5 +11,5 @@
 }
 
 .sim-img-name {
-  @apply mb-8 text-center h-1;
+  @apply mb-8 text-center h-6 sm:h-1;
 }
