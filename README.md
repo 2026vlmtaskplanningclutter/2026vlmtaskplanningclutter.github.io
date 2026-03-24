@@ -1,13 +1,13 @@
-# 2026 VLM Task Planning Clutter
+# 2026 Open-Set Object Retrieval in Clutter
 
-This is the repository for the website of the `Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?` paper. See https://2026vlmtaskplanningclutter.github.io/ for more information.
+This is the repository for the website of the `Open-Set Object Retrieval in Clutter via Hybrid Vision-Language and Geometric Reasoning` paper. See https://2026vlmtaskplanningclutter.github.io/ for more information.
 
 ## Bibtex
 
 ```
-@inproceedings{anonymous2026vlmclutter,
+@inproceedings{anonymous2026opensetclutter,
   author    = {Anonymous},
-  title     = {Are VLMs Effective Task Planners for Robotic Object Retrieval in Clutter?},
+  title     = {Open-Set Object Retrieval in Clutter via Hybrid Vision-Language and Geometric Reasoning},
   journal   = {In Submission},
   year      = {2026},
 }
