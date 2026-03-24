@@ -76,8 +76,8 @@
             blocking objects to be removed before the target is available
             to be retrieved. Vision-Language-Models (VLMs) have been
             recently argued as pretrained solutions that can reason about
-            such spatial object relationships given RGB images. Tradi-
-            tional engineered solutions in this space aim to heuristically
+            such spatial object relationships given RGB images. Traditional 
+            engineered solutions in this space aim to heuristically
             identify object relationships from depth. This work shows
             that pretrained VLMs alone (without ﬁnetuning) cannot yet
             outperform even random object selection. Engineering solutions
@@ -87,8 +87,8 @@
             dependencies via 3D reasoning, which improve performance.
             These observations are conﬁrmed in extensive physics-based
             simulation experiments and real world experiments for a setup
-            involving a robotic arm with a parallel gripper and a torso-
-            mounted stereo camera. 
+            involving a robotic arm with a parallel gripper and a torso-mounted 
+            stereo camera. 
           </p>
           <img
             src="/images/robot.png"
@@ -435,15 +435,15 @@
             MuJoCo is used to isolate the evaluation of object sequencing.
           </p>
           <p class="para">
-            The results show that using a VLM out of the box (de-
-            spite being pretrained for robotics) is even under-performing
+            The results show that using a VLM out of the box (despite 
+            being pretrained for robotics) is even under-performing
             making random selections among directly graspable objects.
             The dependency graph approach, DG-SELECT, is more
             successful than RANDOM and VLM-SELECT but critically
             depends on the parameters of the heuristics, which were
             tuned to optimize performance in these experiments. The
-            VLM-FIXES-DG approach, which used the VLM to au-
-            tomatically deﬁne the dependency graph achieved similar
+            VLM-FIXES-DG approach, which used the VLM to automatically 
+            deﬁne the dependency graph achieved similar
             success rate to DG-SELECTwith some increase in number of
             objects picked till success was achieved. Feeding the grasp
             information into the VLM and allowing the VLM to make the
@@ -485,14 +485,14 @@
             The real world experiments yield similar observations to
             the simulated experiments. While the real system consumes
             more noisy perception data, which can lead to incorrect
-            target detection, success was quite high. A potential advan-
-            tage of the VLM-based solutions is that they experience a
+            target detection, success was quite high. A potential advantage 
+            of the VLM-based solutions is that they experience a
             smaller real-to-sim gap given real image input. Still, the
             VLM-SELECT approach underperforms the alternatives, as it
             has the lower success rate. The methods that make the ﬁnal
             selection via a Dependency Graph, i.e., DG-SELECT and
-            VLM-FIXES-DG, have high success rate but still occasion-
-            ally dropped objects. The VLM+GRASPS hybrid solution was
+            VLM-FIXES-DG, have high success rate but still occasionally 
+            dropped objects. The VLM+GRASPS hybrid solution was
             the best performing method, solving all real scenes without
             any object drops similar to the human experts.
           </p>
