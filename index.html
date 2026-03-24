@@ -63,29 +63,33 @@
         <h2 class="header-2">Abstract</h2>
         <div class="flex flex-row flex-wrap md:flex-nowrap gap-8">
           <p class="max-w-full md:max-w-md lg:max-w-xl text-justify para">
-            Robots must effectively retrieve novel objects in clutter, where a
-            target may not be directly visible or accessible. Such problems
-            involve reasoning about the order of blocking objects to be removed
-            before the target is picked. Engineered solutions in this space
-            focus on identifying object relationships from depth to inform the
-            retraction sequence. Vision-Language-Models (VLMs) have been argued
-            as pretrained solutions that effectively reason about such spatial
-            relationships in images. This paper first aims to evaluate VLMs
-            against engineered solutions for selecting which object to retrieve
-            next. For this purpose, a modular software infrastructure is
-            developed enabling evaluation of alternatives for object selection.
-            Simulated scenes with significant occlusions and clutter are defined
-            as a dataset for sequential object retrieval. These scenes are
-            solvable by the modular software given human-in-the-loop object
-            selection, which also serves as an expert comparison point. The
-            evaluation indicates that both VLMs and engineered solutions do not
-            perform significantly better than random object selection. Yet, they
-            have complementary properties. This motivates hybrid strategies for
-            targeted object retrieval that combine the visual reasoning of VLMs
-            with engineered dependencies via 3D reasoning. The hybrid approaches
-            achieve improved performance. These observations are also confirmed
-            by real world experiments using a robotic arm with a parallel
-            gripper, a stereo camera, and the same software infrastructure.
+            Robots must effectively retrieve novel objects in
+            clutter, where a target may not be directly visible or accessible.
+            In many real-world setups a robot must handle an open set of
+            objects under constrained viewpoints and limited reachability;
+            conditions often simpliﬁed in existing laboratory setups. Under
+            these constraints, the robot must generate safe retrieval motions
+            despite kinematic limitations and uncertainty regarding the
+            novel objects’ shapes. This work proposes a complete modular
+            pipeline to address such targeted object retrieval problems
+            in clutter. The focus is on evaluating solutions for a critical
+            component of this pipeline: reasoning about the order of
+            blocking objects to be removed before the target is available
+            to be retrieved. Vision-Language-Models (VLMs) have been
+            recently argued as pretrained solutions that can reason about
+            such spatial object relationships given RGB images. Tradi-
+            tional engineered solutions in this space aim to heuristically
+            identify object relationships from depth. This work shows
+            that pretrained VLMs alone (without ﬁnetuning) cannot yet
+            outperform even random object selection. Engineering solutions
+            are superior but also lead to a lot of failure cases. This
+            work proposes hybrid strategies for targeted object retrieval
+            that combine the visual reasoning of VLMs with engineered
+            dependencies via 3D reasoning, which improve performance.
+            These observations are conﬁrmed in extensive physics-based
+            simulation experiments and real world experiments for a setup
+            involving a robotic arm with a parallel gripper and a torso-
+            mounted stereo camera. 
           </p>
           <img
             src="/images/robot.png"
@@ -432,22 +436,26 @@
             MuJoCo is used to isolate the evaluation of object sequencing.
           </p>
           <p class="para">
-            The results show that using a VLM out of the box (despite
-            being pretrained for robotics) is only marginally safer than
-            making random selections while taking more total picks.
-            The dependency graph approach, DG-SELECT, is safer than
-            RANDOM and VLM-SELECT but results in increased computation 
-            and critically depends on the parameters of the heuristics, 
-            which were optimized for these experiments. Feeding
-            the grasp information into the VLM as in the VLM+GRASPS
-            approach reduces dependence on heuristic parameters and
-            exceeds the success rate of DG-SELECT. The number of
-            pick actions, however, to solve TORC did increase slightly.
-            The VLM-FIXES-DG approach, which used the VLM to
-            adjust the dependency graph was the approach with the
-            highest number of retrievals without drops and matched
-            the number of pick actions achieved by the DG-SELECT
-            approach but had a higher computational cost.
+            The results show that using a VLM out of the box (de-
+            spite being pretrained for robotics) is even under-performing
+            making random selections among directly graspable objects.
+            The dependency graph approach, DG-SELECT, is more
+            successful than RANDOM and VLM-SELECT but critically
+            depends on the parameters of the heuristics, which were
+            tuned to optimize performance in these experiments. The
+            VLM-FIXES-DG approach, which used the VLM to au-
+            tomatically deﬁne the dependency graph achieved similar
+            success rate to DG-SELECTwith some increase in number of
+            objects picked till success was achieved. Feeding the grasp
+            information into the VLM and allowing the VLM to make the
+            object selection as in the VLM+GRASPS approach achieves
+            the highest success rate, while requiring a similar number
+            of objects to be picked as in the DG-SELECT approach.
+            The VLM-based solutions required increased computation
+            time due to the call to the remote Gemini service. All the
+            automated task planners exhibit similar rates of non-target
+            objects rolling off the tabletop during the retrieval process,
+            which in some cases arises due to simulation artifacts.
           </p>
         </div>
         <div>
@@ -476,20 +484,18 @@
           </p>
           <p class="para">
             The real world experiments yield similar observations to
-            the simulated experiments despite the observation noise.
-            While the real system consumes more noisy perception
-            data, such as the potential for incorrect target detection,
-            success was quite high on the real scenes. A potential
-            advantage of the VLM-based solutions is that they experience
-            a smaller real-to-sim gap given real image input. Still, the
+            the simulated experiments. While the real system consumes
+            more noisy perception data, which can lead to incorrect
+            target detection, success was quite high. A potential advan-
+            tage of the VLM-based solutions is that they experience a
+            smaller real-to-sim gap given real image input. Still, the
             VLM-SELECT approach underperforms the alternatives, as it
-            has the lower success rate and the highest number of picks
-            required. The methods that make the final selection via a 
-            Dependency Graph, i.e., DG-SELECT and VLM-FIXES-DG,
-            have higher success rate but do experience failures. The
-            VLM+GRASPS hybrid solution was one of the best performing
-            methods, managing to solve all real world
-            examples, similar to the human experts.
+            has the lower success rate. The methods that make the ﬁnal
+            selection via a Dependency Graph, i.e., DG-SELECT and
+            VLM-FIXES-DG, have high success rate but still occasion-
+            ally dropped objects. The VLM+GRASPS hybrid solution was
+            the best performing method, solving all real scenes without
+            any object drops similar to the human experts.
           </p>
         </div>
       </div>
