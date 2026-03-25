@@ -7,7 +7,7 @@
 }
 
 .real-img > img {
-  @apply aspect-3/2 min-w-0 object-cover sm:aspect-auto sm:h-full;
+  @apply aspect-3/2 min-w-0 object-cover sm:aspect-auto grow;
 }
 
 .real-img > h4 {
