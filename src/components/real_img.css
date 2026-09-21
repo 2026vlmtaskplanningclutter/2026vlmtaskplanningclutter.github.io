@@ -3,11 +3,11 @@
 }
 
 .real-img {
-  @apply grow shrink h-full flex flex-col text-primary-content bg-primary border-3 border-primary;
+  @apply grow shrink min-h-0 h-full flex flex-col text-primary-content bg-primary border-3 border-primary overflow-hidden;
 }
 
 .real-img > img {
-  @apply aspect-3/2 min-w-0 object-cover sm:aspect-auto grow;
+  @apply aspect-3/2 min-w-0 min-h-0 object-cover sm:aspect-auto grow;
 }
 
 .real-img > h4 {
